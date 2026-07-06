@@ -1,0 +1,14 @@
+<view class="bar-wrap">
+  <view class="bar">
+    <view
+      wx:for="{{list}}"
+      wx:key="path"
+      class="bar-item {{active === index ? 'on' : ''}}"
+      data-index="{{index}}"
+      bindtap="onTap"
+    >
+      <van-icon name="{{active === index ? item.iconActive : item.icon}}" size="44rpx" />
+      <text class="bar-text">{{item.text}}</text>
+    </view>
+  </view>
+</view>

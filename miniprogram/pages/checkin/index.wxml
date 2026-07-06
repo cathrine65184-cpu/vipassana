@@ -1,0 +1,76 @@
+<view class="page">
+
+  <!-- 统计概览 -->
+  <view class="card stats">
+    <view class="stat">
+      <text class="stat-num">{{streak}}</text>
+      <text class="t-hint">连续天数</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num">{{totalDays}}</text>
+      <text class="t-hint">总天数</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num">{{totalHours}}<text class="stat-small">时</text>{{totalMinutesRemain}}<text class="stat-small">分</text></text>
+      <text class="t-hint">总时长</text>
+    </view>
+  </view>
+
+  <!-- 日历 -->
+  <view class="card">
+    <view class="cal-head">
+      <van-icon name="arrow-left" size="30rpx" color="rgba(32,50,40,0.4)" bindtap="prevMonth" />
+      <text class="cal-title display">{{monthLabel}}</text>
+      <van-icon name="arrow" size="30rpx" color="rgba(32,50,40,0.4)" bindtap="nextMonth" />
+    </view>
+    <view class="cal-week">
+      <text wx:for="{{weekdays}}" wx:key="*this" class="cal-wd">{{item}}</text>
+    </view>
+    <view class="cal-grid">
+      <view wx:for="{{cells}}" wx:key="key" class="cal-cell">
+        <view wx:if="{{!item.empty}}" class="cal-day {{item.done ? 'done' : ''}} {{item.isToday ? 'today' : ''}}">
+          {{item.day}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 本周 -->
+  <view class="card">
+    <view class="t-title">本周</view>
+    <view class="week">
+      <view wx:for="{{week}}" wx:key="label" class="week-col">
+        <view class="week-bar {{item.done ? 'done' : ''}}"></view>
+        <text class="t-hint">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 近六个月 -->
+  <view class="card">
+    <view class="t-title">近六个月</view>
+    <view class="months">
+      <view wx:for="{{monthBars}}" wx:key="label" class="month-col">
+        <text class="month-count">{{item.count}}</text>
+        <view class="month-track">
+          <view class="month-bar" style="height:{{item.height}}%"></view>
+        </view>
+        <text class="t-hint">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成就徽章 -->
+  <view class="card">
+    <view class="t-title">成就徽章</view>
+    <view class="badges">
+      <view wx:for="{{badges}}" wx:key="id" class="badge {{item.unlocked ? 'unlocked' : ''}}">
+        <view class="badge-icon">
+          <van-icon name="{{item.icon}}" size="48rpx" />
+        </view>
+        <view class="badge-name">{{item.name}}</view>
+        <view class="badge-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+</view>

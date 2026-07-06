@@ -1,0 +1,75 @@
+.stats { display: flex; justify-content: space-around; }
+.stat { display: flex; flex-direction: column; align-items: center; }
+.stat-num { font-size: 52rpx; font-weight: 700; }
+.stat-small { font-size: 24rpx; font-weight: 400; color: var(--ink-3); margin: 0 4rpx; }
+
+/* 日历 */
+.cal-head { display: flex; align-items: center; justify-content: space-between; padding: 0 16rpx; }
+.cal-title { font-size: 32rpx; }
+.cal-week { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: 32rpx; }
+.cal-wd { text-align: center; font-size: 22rpx; color: var(--ink-3); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12rpx 0; margin-top: 16rpx; }
+.cal-cell { display: flex; align-items: center; justify-content: center; height: 76rpx; }
+.cal-day {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25rpx;
+  color: var(--ink-2);
+}
+.cal-day.done { background: var(--forest); color: #F7F4EE; }
+.cal-day.today { box-shadow: 0 0 0 4rpx var(--gold-soft); }
+
+/* 周柱状 */
+.week { display: flex; justify-content: space-between; margin-top: 32rpx; padding: 0 8rpx; }
+.week-col { display: flex; flex-direction: column; align-items: center; gap: 12rpx; }
+.week-bar {
+  width: 20rpx;
+  height: 120rpx;
+  border-radius: 999rpx;
+  background: var(--line);
+}
+.week-bar.done { background: var(--gold); }
+
+/* 月柱状 */
+.months { display: flex; justify-content: space-between; margin-top: 32rpx; padding: 0 8rpx; }
+.month-col { display: flex; flex-direction: column; align-items: center; gap: 10rpx; }
+.month-count { font-size: 22rpx; color: var(--ink-3); }
+.month-track {
+  width: 24rpx;
+  height: 160rpx;
+  border-radius: 999rpx;
+  background: var(--line);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.month-bar { width: 100%; background: var(--forest); border-radius: 999rpx; min-height: 6rpx; }
+
+/* 徽章 */
+.badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28rpx; margin-top: 32rpx; }
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0.35;
+  filter: grayscale(1);
+  transition: all 0.3s ease;
+}
+.badge.unlocked { opacity: 1; filter: none; }
+.badge-icon {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badge-name { margin-top: 14rpx; font-size: 26rpx; font-weight: 600; }
+.badge-desc { margin-top: 4rpx; font-size: 21rpx; color: var(--ink-3); }

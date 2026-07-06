@@ -1,0 +1,16 @@
+.sec {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 48rpx 8rpx 24rpx;
+}
+.sec-left { display: flex; flex-direction: column; }
+.sec-title { font-size: 36rpx; color: var(--ink, #203228); }
+.sec-sub { font-size: 24rpx; color: var(--ink-3, rgba(32,50,40,0.38)); margin-top: 4rpx; }
+.sec-more {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  font-size: 25rpx;
+  color: var(--ink-3, rgba(32,50,40,0.38));
+}

@@ -1,0 +1,89 @@
+<view class="page">
+  <view class="head">
+    <view class="head-title display">文章分享 · 小圈子交流</view>
+    <view class="t-sub">分享心得，彼此陪伴成长</view>
+  </view>
+
+  <!-- 搜索 -->
+  <view class="search">
+    <van-icon name="search" size="30rpx" color="rgba(32,50,40,0.35)" />
+    <input
+      class="search-input"
+      placeholder="搜索帖子、作者"
+      confirm-type="search"
+      bindconfirm="onSearch"
+      bindinput="onSearch"
+    />
+  </view>
+
+  <!-- 话题标签 -->
+  <scroll-view scroll-x class="tags" enhanced show-scrollbar="{{false}}">
+    <view
+      wx:for="{{hotTags}}"
+      wx:key="*this"
+      class="chip {{tag === item ? 'active' : ''}}"
+      data-tag="{{item}}"
+      bindtap="toggleTag"
+    >{{item}}</view>
+  </scroll-view>
+
+  <!-- 排序 Tab -->
+  <view class="sort">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="*this"
+      class="sort-item {{tab === index ? 'on' : ''}}"
+      data-index="{{index}}"
+      bindtap="switchTab"
+    >{{item}}</view>
+  </view>
+
+  <!-- 骨架屏 -->
+  <block wx:if="{{loading}}">
+    <view class="falls">
+      <view class="fall-col"><view class="skeleton sk-post"></view><view class="skeleton sk-post short"></view></view>
+      <view class="fall-col"><view class="skeleton sk-post short"></view><view class="skeleton sk-post"></view></view>
+    </view>
+  </block>
+
+  <!-- 瀑布流 -->
+  <block wx:else>
+    <view class="falls" wx:if="{{left.length || right.length}}">
+      <view class="fall-col">
+        <view wx:for="{{left}}" wx:key="id" class="card post fade-item" data-id="{{item.id}}" data-mine="{{item.mine}}" bindtap="goDetail">
+          <view wx:if="{{item.cover}}" class="post-cover cover {{item.cover}}"></view>
+          <view class="post-title">{{item.title}}</view>
+          <view class="post-excerpt">{{item.excerpt}}</view>
+          <view class="post-meta">
+            <view class="post-author">
+              <view class="post-avatar {{item.avatarBg}}"></view>
+              <text>{{item.author}}</text>
+            </view>
+            <view class="post-like"><van-icon name="like-o" size="24rpx" />{{item.likes}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="fall-col">
+        <view wx:for="{{right}}" wx:key="id" class="card post fade-item" data-id="{{item.id}}" data-mine="{{item.mine}}" bindtap="goDetail">
+          <view wx:if="{{item.cover}}" class="post-cover cover {{item.cover}}"></view>
+          <view class="post-title">{{item.title}}</view>
+          <view class="post-excerpt">{{item.excerpt}}</view>
+          <view class="post-meta">
+            <view class="post-author">
+              <view class="post-avatar {{item.avatarBg}}"></view>
+              <text>{{item.author}}</text>
+            </view>
+            <view class="post-like"><van-icon name="like-o" size="24rpx" />{{item.likes}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <empty-state wx:else title="这里还很安静" desc="没有找到相关内容，换个关键词试试" />
+  </block>
+
+  <!-- 发帖悬浮按钮 -->
+  <view class="fab" bindtap="goCreate">
+    <van-icon name="plus" color="#F7F4EE" size="44rpx" />
+  </view>
+</view>

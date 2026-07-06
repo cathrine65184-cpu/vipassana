@@ -1,0 +1,53 @@
+<view class="page">
+
+  <view class="stage-label display">{{stage}}</view>
+  <view class="t-sub center">每一次冥想与日记，都会让这棵树生长</view>
+
+  <!-- 树 -->
+  <view class="tree-box">
+    <view class="ground"></view>
+    <view class="trunk"></view>
+    <view class="branch b1"></view>
+    <view class="branch b2"></view>
+
+    <view
+      wx:for="{{leaves}}"
+      wx:key="id"
+      class="leaf"
+      style="left:{{item.x}}%;top:{{item.y}}%;animation-delay:{{item.delay}}s;"
+    ></view>
+    <view
+      wx:for="{{flowers}}"
+      wx:key="id"
+      class="flower"
+      style="left:{{item.x}}%;top:{{item.y}}%;animation-delay:{{item.delay}}s;"
+    >✿</view>
+  </view>
+
+  <view class="hint t-hint">{{nextHint}}</view>
+
+  <!-- 统计 -->
+  <view class="card stats">
+    <view class="stat">
+      <text class="stat-num">{{points}}</text>
+      <text class="t-hint">成长值</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num">{{sessionCount}}</text>
+      <text class="t-hint">冥想次数</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num">{{journalCount}}</text>
+      <text class="t-hint">日记篇数</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num">{{levelName}}</text>
+      <text class="t-hint">当前等级</text>
+    </view>
+  </view>
+
+  <view class="acts">
+    <view class="btn btn-primary act" bindtap="goMeditate">去冥想 +成长值</view>
+    <view class="btn btn-ghost act" bindtap="goJournal">写日记 +2</view>
+  </view>
+</view>

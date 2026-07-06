@@ -1,0 +1,42 @@
+<view class="coach">
+  <scroll-view scroll-y class="msgs" scroll-into-view="{{scrollInto}}" scroll-with-animation>
+    <view class="disclaimer">{{disclaimer}}</view>
+
+    <view
+      wx:for="{{messages}}"
+      wx:key="id"
+      id="msg-{{item.id}}"
+      class="msg {{item.role}}"
+    >
+      <view wx:if="{{item.role === 'coach'}}" class="coach-avatar">
+        <image src="/assets/logo-green.png" mode="aspectFit" class="coach-avatar-img" />
+      </view>
+      <view class="bubble">{{item.text}}</view>
+    </view>
+
+    <view wx:if="{{typing}}" class="msg coach">
+      <view class="coach-avatar">
+        <image src="/assets/logo-green.png" mode="aspectFit" class="coach-avatar-img" />
+      </view>
+      <view class="bubble typing">
+        <view class="dot"></view><view class="dot"></view><view class="dot"></view>
+      </view>
+    </view>
+    <view class="msgs-tail"></view>
+  </scroll-view>
+
+  <view class="input-bar safe-bottom">
+    <input
+      class="input"
+      placeholder="说说此刻的感受…"
+      value="{{input}}"
+      bindinput="onInput"
+      confirm-type="send"
+      bindconfirm="send"
+      confirm-hold
+    />
+    <view class="send" bindtap="send">
+      <van-icon name="guide-o" color="#F7F4EE" size="36rpx" />
+    </view>
+  </view>
+</view>

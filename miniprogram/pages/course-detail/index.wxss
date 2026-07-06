@@ -1,0 +1,100 @@
+.page { padding-bottom: 240rpx; }
+
+.hero {
+  border-radius: var(--radius);
+  padding: 56rpx 40rpx;
+  position: relative;
+  color: #F7F4EE;
+  margin-bottom: 24rpx;
+}
+.hero-order { font-size: 40rpx; opacity: 0.7; }
+.hero-title { font-size: 46rpx; margin-top: 12rpx; }
+.hero-sub { margin-top: 12rpx; font-size: 26rpx; opacity: 0.8; }
+.hero-diff {
+  position: absolute;
+  top: 32rpx;
+  right: 32rpx;
+  border: 2rpx solid rgba(247, 244, 238, 0.5);
+  font-size: 22rpx;
+  padding: 6rpx 22rpx;
+  border-radius: 999rpx;
+}
+
+.desc { margin-top: 16rpx; color: var(--ink-2); font-size: 27rpx; line-height: 1.9; }
+
+.teachers { display: flex; flex-wrap: wrap; gap: 20rpx; margin-top: 24rpx; }
+.teacher {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 24rpx;
+  color: var(--ink-2);
+  background: var(--card-soft);
+  border: 2rpx solid var(--line);
+  padding: 10rpx 24rpx;
+  border-radius: 999rpx;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14rpx;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: var(--ink-2);
+}
+
+.chapter-head { display: flex; align-items: center; justify-content: space-between; }
+
+.chapter {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 26rpx 0;
+  border-bottom: 2rpx solid var(--line);
+  transition: opacity 0.2s ease;
+}
+.chapter:last-child { border-bottom: none; }
+.chapter.locked { opacity: 0.55; }
+.chapter-icon {
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 22rpx;
+  background: var(--card-soft);
+  border: 2rpx solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-2);
+  flex-shrink: 0;
+}
+.chapter-icon.done { background: var(--forest); color: #F7F4EE; border-color: var(--forest); }
+.chapter-info { flex: 1; }
+.chapter-title { font-size: 28rpx; }
+.free-tag {
+  margin-left: 12rpx;
+  color: var(--gold);
+  background: var(--gold-soft);
+  font-size: 20rpx;
+  padding: 2rpx 14rpx;
+  border-radius: 999rpx;
+}
+
+.badge-card { display: flex; align-items: center; gap: 24rpx; background: linear-gradient(120deg, var(--card), var(--gold-soft)); }
+
+.buybar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--card);
+  box-shadow: 0 -8rpx 40rpx rgba(32, 50, 40, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 40rpx;
+  border-radius: 40rpx 40rpx 0 0;
+}
+.buybar-num { font-size: 48rpx; font-weight: 700; }
+.buybar-unit { font-size: 24rpx; color: var(--ink-3); margin-left: 8rpx; }
+.buybar-btn { width: 320rpx; }

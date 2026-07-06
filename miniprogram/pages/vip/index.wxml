@@ -1,0 +1,45 @@
+<view class="page">
+
+  <view class="hero">
+    <image class="hero-logo" src="/assets/logo-green.png" mode="aspectFit" />
+    <view class="hero-title display">VIP 会员</view>
+    <view class="t-sub">把觉察，变成一生的陪伴</view>
+  </view>
+
+  <!-- 权益 -->
+  <view class="card">
+    <view class="t-title">会员权益</view>
+    <view wx:for="{{benefits}}" wx:key="title" class="benefit">
+      <view class="benefit-icon"><van-icon name="{{item.icon}}" size="36rpx" color="#B99A5B" /></view>
+      <view>
+        <view class="benefit-title">{{item.title}}</view>
+        <view class="t-hint">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 定价 -->
+  <view class="plans">
+    <view
+      wx:for="{{plans}}"
+      wx:key="id"
+      class="plan card {{picked === item.id ? 'on' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="pick"
+    >
+      <view wx:if="{{item.hot}}" class="plan-hot">最受欢迎</view>
+      <view class="plan-name">{{item.name}}</view>
+      <view class="plan-price"><text class="plan-cny">¥</text>{{item.price}}</view>
+      <view class="plan-unit">{{item.unit}}</view>
+      <view class="plan-note">{{item.note}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{vip}}" class="already">
+    <van-icon name="diamond" color="#B99A5B" size="32rpx" />
+    <text>你已是 {{vipPlan}}，感谢同行</text>
+  </view>
+  <view wx:else class="btn btn-gold subscribe" bindtap="subscribe">开启会员</view>
+
+  <view class="t-hint terms">订阅即代表同意《会员服务协议》· 演示环境不会产生真实扣款</view>
+</view>

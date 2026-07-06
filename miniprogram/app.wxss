@@ -1,0 +1,156 @@
+/**
+ * 全局设计系统 · 应无所住
+ * 深林绿 / 暖米白 / 柔金，圆角卡片，柔和阴影，大量留白。
+ */
+
+page {
+  /* ---- Design Tokens ---- */
+  --forest: #203228;          /* 深林绿：主色 */
+  --forest-2: #2C4436;        /* 深林绿：浅一档 */
+  --beige: #F7F4EE;           /* 暖米白：页面背景 */
+  --card: #FFFFFF;            /* 卡片 */
+  --card-soft: #FDFCF9;       /* 次级卡片 */
+  --ink: #203228;             /* 主文字 */
+  --ink-2: rgba(32, 50, 40, 0.62);   /* 次文字 */
+  --ink-3: rgba(32, 50, 40, 0.38);   /* 弱文字 */
+  --gold: #B99A5B;            /* 柔金：点缀 */
+  --gold-soft: #EFE6D3;       /* 柔金：底色 */
+  --line: rgba(32, 50, 40, 0.08);    /* 分隔线 */
+  --shadow: 0 12rpx 40rpx rgba(32, 50, 40, 0.07);
+  --radius: 32rpx;
+  --radius-sm: 20rpx;
+
+  background: var(--beige);
+  color: var(--ink);
+  font-family: -apple-system, "PingFang SC", "Songti SC", "Helvetica Neue", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* ---- 深色模式 ---- */
+@media (prefers-color-scheme: dark) {
+  page {
+    --forest: #1C2A22;
+    --forest-2: #24382C;
+    --beige: #171E1A;
+    --card: #212B24;
+    --card-soft: #1D2620;
+    --ink: #ECEAE3;
+    --ink-2: rgba(236, 234, 227, 0.62);
+    --ink-3: rgba(236, 234, 227, 0.36);
+    --gold: #C9AC6F;
+    --gold-soft: #33402F;
+    --line: rgba(236, 234, 227, 0.08);
+    --shadow: 0 12rpx 40rpx rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ---- 通用容器 ---- */
+.page {
+  min-height: 100vh;
+  padding: 24rpx 32rpx 220rpx; /* 底部为悬浮 TabBar 留白 */
+  box-sizing: border-box;
+  animation: page-in 0.45s ease both;
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(16rpx); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- 卡片 ---- */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.card + .card { margin-top: 24rpx; }
+
+/* ---- 文字 ---- */
+.display {
+  font-family: "Songti SC", "Noto Serif SC", serif;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+}
+.t-title { font-size: 34rpx; font-weight: 600; }
+.t-sub { font-size: 26rpx; color: var(--ink-2); }
+.t-hint { font-size: 24rpx; color: var(--ink-3); }
+.t-gold { color: var(--gold); }
+
+/* ---- 按钮 ---- */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 92rpx;
+  border-radius: 46rpx;
+  font-size: 30rpx;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn:active { transform: scale(0.97); opacity: 0.88; }
+.btn-primary { background: var(--forest); color: #F7F4EE; }
+.btn-ghost { background: transparent; color: var(--ink); border: 2rpx solid var(--line); }
+.btn-gold { background: var(--gold); color: #FFFFFF; }
+
+/* ---- 标签 / 胶囊 ---- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 10rpx 28rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  color: var(--ink-2);
+  background: var(--card);
+  border: 2rpx solid var(--line);
+  margin: 0 16rpx 16rpx 0;
+  transition: all 0.2s ease;
+}
+.chip.active {
+  background: var(--forest);
+  color: #F7F4EE;
+  border-color: var(--forest);
+}
+
+/* ---- 骨架屏 ---- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--line);
+  border-radius: var(--radius-sm);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* ---- 渐变封面（图片占位，可由 CMS 替换为真实图片）---- */
+.cover { border-radius: var(--radius-sm); overflow: hidden; }
+.g-forest { background: linear-gradient(135deg, #2C4436 0%, #203228 55%, #16241C 100%); }
+.g-moss { background: linear-gradient(135deg, #6B7F5E 0%, #465943 60%, #2E4032 100%); }
+.g-dew { background: linear-gradient(135deg, #90A98F 0%, #5F7A66 60%, #3C5344 100%); }
+.g-dawn { background: linear-gradient(135deg, #D9C39A 0%, #B99A5B 60%, #8A6F3C 100%); }
+.g-mist { background: linear-gradient(135deg, #C9CFC3 0%, #93A093 60%, #5F7166 100%); }
+.g-night { background: linear-gradient(135deg, #33414D 0%, #223039 60%, #141F26 100%); }
+.g-stream { background: linear-gradient(135deg, #8FB3AD 0%, #5D8680 60%, #395B57 100%); }
+.g-stone { background: linear-gradient(135deg, #B7AFA2 0%, #8C8478 60%, #5C564D 100%); }
+
+/* ---- 列表淡入的微交互 ---- */
+.fade-item { animation: page-in 0.5s ease both; }
+.fade-item:nth-child(2) { animation-delay: 0.05s; }
+.fade-item:nth-child(3) { animation-delay: 0.1s; }
+.fade-item:nth-child(4) { animation-delay: 0.15s; }
+.fade-item:nth-child(5) { animation-delay: 0.2s; }
+.fade-item:nth-child(6) { animation-delay: 0.25s; }
+
+/* ---- 底部安全区 ---- */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }

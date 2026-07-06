@@ -1,0 +1,60 @@
+<view class="page">
+  <view class="head">
+    <view class="head-title display">付费课程</view>
+    <view class="t-sub">系统学习内观与正念 · 四条学习路径</view>
+  </view>
+
+  <!-- 骨架屏 -->
+  <block wx:if="{{loading}}">
+    <view class="skeleton sk-course" wx:for="{{[1,2,3]}}" wx:key="*this"></view>
+  </block>
+
+  <block wx:else>
+    <view
+      wx:for="{{list}}"
+      wx:key="id"
+      class="card course fade-item"
+      data-id="{{item.id}}"
+      bindtap="goDetail"
+    >
+      <view class="course-cover cover {{item.cover}}">
+        <text class="course-order display">{{item.order}}</text>
+        <view class="course-diff">{{item.difficulty}}</view>
+      </view>
+      <view class="course-body">
+        <view class="course-title t-title">{{item.title}}</view>
+        <view class="course-sub">{{item.subtitle}}</view>
+
+        <view class="course-tags">
+          <text wx:for="{{item.highlights}}" wx:for-item="h" wx:key="*this" class="course-tag">{{h}}</text>
+        </view>
+
+        <!-- 进度条：已解锁课程显示学习进度 -->
+        <view wx:if="{{item.unlocked && item.progress > 0}}" class="course-progress">
+          <view class="course-progress-bar"><view class="course-progress-in" style="width:{{item.progress}}%"></view></view>
+          <text class="t-hint">{{item.progress}}%</text>
+        </view>
+
+        <view class="course-foot">
+          <view class="course-price">
+            <text class="course-price-num">¥{{item.price}}</text>
+            <text class="course-price-unit">{{item.priceUnit}}</text>
+          </view>
+          <view class="course-lock {{item.unlocked ? 'open' : ''}}">
+            <van-icon name="{{item.unlocked ? 'success' : 'lock'}}" size="28rpx" />
+            <text>{{item.unlocked ? '已解锁' : '待解锁'}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 会员横幅 -->
+    <view class="card vip-banner" bindtap="goVip">
+      <view>
+        <view class="vip-title display">成为会员</view>
+        <view class="t-hint">解锁全部课程与冥想 · 专属社区</view>
+      </view>
+      <van-icon name="arrow" color="#B99A5B" />
+    </view>
+  </block>
+</view>

@@ -1,0 +1,204 @@
+.home { min-height: 100vh; background: var(--beige); }
+
+/* ---------------- Hero ---------------- */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(120% 90% at 20% 0%, #2C4436 0%, transparent 60%),
+    radial-gradient(120% 100% at 90% 20%, #16241C 0%, transparent 70%),
+    linear-gradient(160deg, #24382C 0%, #203228 45%, #131F18 100%);
+  padding: 0 48rpx 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0 0 48rpx 48rpx;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -160rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 560rpx;
+  height: 560rpx;
+  background: radial-gradient(circle, rgba(185, 154, 91, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-brand {
+  align-self: flex-start;
+  color: rgba(247, 244, 238, 0.85);
+  font-size: 30rpx;
+  letter-spacing: 8rpx;
+  font-weight: 600;
+}
+
+.hero-logo {
+  width: 240rpx;
+  height: 240rpx;
+  margin-top: 48rpx;
+  animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.95; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.hero-slogan {
+  color: #F7F4EE;
+  font-size: 72rpx;
+  margin-top: 24rpx;
+  letter-spacing: 12rpx;
+}
+
+.hero-en {
+  color: rgba(247, 244, 238, 0.6);
+  font-size: 26rpx;
+  font-style: italic;
+  margin-top: 8rpx;
+}
+
+.hero-sub {
+  color: rgba(247, 244, 238, 0.78);
+  font-size: 28rpx;
+  letter-spacing: 6rpx;
+  margin-top: 20rpx;
+}
+
+.hero-sentence {
+  margin-top: 44rpx;
+  color: rgba(247, 244, 238, 0.66);
+  font-size: 25rpx;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* ---------------- Body ---------------- */
+.body { padding: 32rpx 32rpx 220rpx; margin-top: -60rpx; }
+
+.sk-lg { height: 320rpx; margin-bottom: 24rpx; border-radius: var(--radius); }
+.sk-md { height: 200rpx; margin-bottom: 24rpx; border-radius: var(--radius); }
+
+/* 四大支柱 */
+.pillars { display: flex; flex-direction: column; gap: 24rpx; }
+
+.pillar-head { display: flex; align-items: center; gap: 20rpx; }
+.pillar-badge {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pillar-name { display: flex; flex-direction: column; }
+.pillar-title { font-size: 38rpx; }
+.pillar-en { font-size: 22rpx; color: var(--ink-3); letter-spacing: 2rpx; }
+.pillar-desc { margin-top: 16rpx; font-size: 26rpx; color: var(--ink-2); }
+
+.pillar-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+  margin-top: 24rpx;
+}
+.pillar-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-soft);
+  border: 2rpx solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 18rpx 24rpx;
+  font-size: 26rpx;
+  color: var(--ink-2);
+  transition: transform 0.15s ease;
+}
+.pillar-link:active { transform: scale(0.97); }
+
+/* 禅语卡 */
+.quote-card { position: relative; padding: 48rpx 40rpx; overflow: hidden; }
+.quote-mark {
+  position: absolute;
+  top: -20rpx;
+  left: 28rpx;
+  font-size: 140rpx;
+  color: var(--gold-soft);
+}
+.quote-text {
+  position: relative;
+  font-size: 32rpx;
+  line-height: 2;
+  text-align: center;
+}
+.quote-author {
+  margin-top: 24rpx;
+  text-align: right;
+  font-size: 24rpx;
+  color: var(--gold);
+}
+
+/* 今日冥想 */
+.continue-card { display: flex; gap: 28rpx; align-items: center; }
+.continue-cover {
+  width: 200rpx;
+  height: 200rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.continue-info { flex: 1; display: flex; flex-direction: column; gap: 10rpx; }
+.continue-btn {
+  align-self: flex-start;
+  margin-top: 10rpx;
+  background: var(--forest);
+  color: #F7F4EE;
+  font-size: 25rpx;
+  padding: 12rpx 36rpx;
+  border-radius: 999rpx;
+}
+
+/* 打卡 */
+.checkin-top { display: flex; align-items: center; gap: 40rpx; }
+.ring-num { font-size: 52rpx; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.ring-label { font-size: 22rpx; color: var(--ink-3); }
+.checkin-stats { flex: 1; display: flex; flex-direction: column; gap: 20rpx; }
+.stat { display: flex; flex-direction: column; }
+.stat-num { font-size: 44rpx; font-weight: 700; }
+.stat-label { font-size: 23rpx; color: var(--ink-3); }
+.checkin-btn {
+  background: var(--gold);
+  color: #FFF;
+  text-align: center;
+  padding: 18rpx 0;
+  border-radius: 999rpx;
+  font-size: 27rpx;
+  transition: transform 0.15s ease;
+}
+.checkin-btn:active { transform: scale(0.97); }
+.checkin-btn.done { background: var(--gold-soft); color: var(--gold); }
+
+.week {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36rpx;
+  padding-top: 28rpx;
+  border-top: 2rpx solid var(--line);
+}
+.week-day { display: flex; flex-direction: column; align-items: center; gap: 8rpx; }
+.week-dot {
+  width: 52rpx;
+  height: 52rpx;
+  border-radius: 50%;
+  border: 2rpx solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-soft);
+}
+.week-dot.done { background: var(--forest); border-color: var(--forest); }
+.week-dot.today { box-shadow: 0 0 0 4rpx var(--gold-soft); }
+.week-label { font-size: 22rpx; color: var(--ink-3); }

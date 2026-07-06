@@ -1,0 +1,27 @@
+<view class="silent">
+  <view class="exit" style="top:{{statusBar + 8}}px;" bindtap="exit">
+    <van-icon name="cross" size="40rpx" color="rgba(247,244,238,0.4)" />
+  </view>
+
+  <!-- 呼吸圆 -->
+  <view class="breath-zone">
+    <view class="breath {{running ? 'go' : ''}}">
+      <view class="breath-inner {{running ? 'go' : ''}}"></view>
+    </view>
+    <view class="phase">{{phase}}</view>
+    <view class="timer display">{{remainText}}</view>
+  </view>
+
+  <!-- 时长选择 -->
+  <view class="durations" wx:if="{{!running}}">
+    <view
+      wx:for="{{durations}}"
+      wx:key="*this"
+      class="dur {{picked === item ? 'on' : ''}}"
+      data-v="{{item}}"
+      bindtap="pick"
+    >{{item}} 分钟</view>
+  </view>
+
+  <view class="start" bindtap="start">{{running ? '结束' : '开始'}}</view>
+</view>

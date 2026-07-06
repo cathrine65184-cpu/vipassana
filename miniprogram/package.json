@@ -1,0 +1,8 @@
+{
+  "name": "vipassana-miniprogram",
+  "version": "1.0.0",
+  "description": "VIPASSANA 应无所住 — WeChat Mini Program",
+  "dependencies": {
+    "@vant/weapp": "^1.11.6"
+  }
+}

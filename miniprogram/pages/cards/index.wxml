@@ -1,0 +1,37 @@
+<view class="cards-page">
+  <view class="head">
+    <view class="display head-title">今日抽一张</view>
+    <view class="t-sub">左右滑动，让一句话陪你一天</view>
+  </view>
+
+  <swiper
+    class="swiper"
+    previous-margin="60rpx"
+    next-margin="60rpx"
+    current="{{current}}"
+    bindchange="onSwiper"
+  >
+    <swiper-item wx:for="{{cards}}" wx:key="id">
+      <view class="wcard cover {{item.cover}} {{current === index ? 'on' : ''}}">
+        <image class="wcard-logo" src="/assets/logo-white.png" mode="aspectFit" />
+        <view class="wcard-text display">{{item.text}}</view>
+        <view class="wcard-from">—— {{item.from}}</view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <view class="dots">
+    <view wx:for="{{cards}}" wx:key="id" class="dot {{current === index ? 'on' : ''}}"></view>
+  </view>
+
+  <view class="acts">
+    <view class="act" bindtap="save">
+      <van-icon name="star-o" size="40rpx" color="#B99A5B" />
+      <text>收藏</text>
+    </view>
+    <button class="act share" open-type="share">
+      <van-icon name="share-o" size="40rpx" color="#B99A5B" />
+      <text>分享</text>
+    </button>
+  </view>
+</view>

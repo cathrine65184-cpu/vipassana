@@ -1,0 +1,69 @@
+.page { padding-bottom: 200rpx; }
+
+.author-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8rpx 8rpx 28rpx;
+}
+.author-left { display: flex; align-items: center; gap: 20rpx; }
+.avatar { width: 84rpx; height: 84rpx; border-radius: 50%; }
+.g-gold { background: linear-gradient(135deg, #D9C39A, #B99A5B); }
+.author-name { font-size: 29rpx; font-weight: 600; }
+.follow-btn {
+  font-size: 25rpx;
+  color: var(--gold);
+  border: 2rpx solid var(--gold);
+  padding: 10rpx 32rpx;
+  border-radius: 999rpx;
+}
+.follow-btn.on { color: var(--ink-3); border-color: var(--line); }
+
+.post-title { font-size: 40rpx; line-height: 1.6; }
+.post-cover { height: 300rpx; margin-top: 28rpx; }
+.para { margin-top: 28rpx; font-size: 29rpx; line-height: 2; color: var(--ink); }
+.tags { margin-top: 32rpx; display: flex; flex-wrap: wrap; gap: 14rpx; }
+.tag { color: var(--gold); font-size: 24rpx; }
+
+.actions { display: flex; justify-content: space-around; }
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rpx;
+  font-size: 23rpx;
+  color: var(--ink-2);
+  background: transparent;
+  border: none;
+  padding: 0;
+  line-height: inherit;
+}
+.action.on { color: var(--gold); }
+.share-btn::after { border: none; }
+
+.comment { padding: 24rpx 0; border-bottom: 2rpx solid var(--line); }
+.comment:last-of-type { border-bottom: none; }
+.comment-head { display: flex; justify-content: space-between; }
+.comment-author { font-size: 25rpx; color: var(--gold); }
+.comment-body { margin-top: 8rpx; font-size: 27rpx; color: var(--ink-2); }
+
+.comment-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 20rpx 32rpx;
+  box-shadow: 0 -8rpx 40rpx rgba(32, 50, 40, 0.08);
+}
+.comment-input {
+  flex: 1;
+  background: var(--beige);
+  border-radius: 999rpx;
+  padding: 16rpx 32rpx;
+  font-size: 27rpx;
+}
+.comment-send { color: var(--gold); font-size: 28rpx; padding: 0 8rpx; }

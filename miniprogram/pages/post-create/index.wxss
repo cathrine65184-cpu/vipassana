@@ -1,0 +1,34 @@
+.title-input { font-size: 34rpx; font-weight: 600; padding: 8rpx 0 24rpx; border-bottom: 2rpx solid var(--line); }
+.content-input { width: 100%; min-height: 320rpx; margin-top: 24rpx; font-size: 28rpx; line-height: 1.9; }
+
+.img-add {
+  margin-top: 24rpx;
+  width: 180rpx;
+  height: 180rpx;
+  border: 2rpx dashed var(--line);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  font-size: 22rpx;
+  color: var(--ink-3);
+  background: var(--card-soft);
+}
+
+.tag-list { margin-top: 24rpx; }
+
+.cover-list { display: flex; gap: 20rpx; margin-top: 24rpx; }
+.cover-opt {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+.cover-opt.on { transform: scale(1.1); box-shadow: 0 0 0 6rpx var(--gold-soft); }
+
+.publish { margin-top: 40rpx; }

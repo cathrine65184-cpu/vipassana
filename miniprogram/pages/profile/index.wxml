@@ -1,0 +1,108 @@
+<view class="page">
+
+  <!-- 用户卡 -->
+  <view class="card user">
+    <view class="avatar" bindtap="editNickname">
+      <image class="avatar-img" src="/assets/logo-green.png" mode="aspectFit" />
+    </view>
+    <view class="user-info">
+      <view class="user-name" bindtap="editNickname">
+        {{nickname}}
+        <van-icon name="edit" size="26rpx" color="rgba(32,50,40,0.35)" />
+      </view>
+      <view class="user-level">
+        <text class="level-tag">{{levelInfo.name}}</text>
+        <text class="t-hint">{{levelInfo.next}}</text>
+      </view>
+      <view class="level-bar">
+        <view class="level-in" style="width:{{levelInfo.progress * 100}}%"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 会员横幅 -->
+  <view class="card vip {{vip ? 'is-vip' : ''}}" bindtap="goVip">
+    <view>
+      <view class="vip-title display">{{vip ? 'VIP 会员 · ' + vipPlan : '成为 VIP 会员'}}</view>
+      <view class="vip-sub">{{vip ? '感谢同行，愿你安住' : '解锁全部课程与冥想 · 专属社区 · 禅修营折扣'}}</view>
+    </view>
+    <van-icon name="{{vip ? 'diamond' : 'diamond-o'}}" size="52rpx" color="#B99A5B" />
+  </view>
+
+  <!-- 数据概览 -->
+  <view class="card overview">
+    <view class="ov" bindtap="goCheckin">
+      <text class="ov-num">{{streak}}</text>
+      <text class="t-hint">连续打卡</text>
+    </view>
+    <view class="ov" bindtap="goCheckin">
+      <text class="ov-num">{{totalMinutes}}</text>
+      <text class="t-hint">冥想分钟</text>
+    </view>
+    <view class="ov" bindtap="goTree">
+      <text class="ov-num">🌱</text>
+      <text class="t-hint">觉察之树</text>
+    </view>
+  </view>
+
+  <!-- 我的内容 -->
+  <view class="card grid">
+    <view class="grid-item" bindtap="showPurchased">
+      <van-icon name="bag-o" size="44rpx" color="#B99A5B" />
+      <text>已购课程</text>
+      <text class="grid-count">{{purchasedCount}}</text>
+    </view>
+    <view class="grid-item" bindtap="showFavorites">
+      <van-icon name="star-o" size="44rpx" color="#B99A5B" />
+      <text>收藏</text>
+      <text class="grid-count">{{favoriteCount}}</text>
+    </view>
+    <view class="grid-item" bindtap="showDownloads">
+      <van-icon name="down" size="44rpx" color="#B99A5B" />
+      <text>下载管理</text>
+      <text class="grid-count">{{downloadCount}}</text>
+    </view>
+    <view class="grid-item" bindtap="goCheckin">
+      <van-icon name="calendar-o" size="44rpx" color="#B99A5B" />
+      <text>打卡记录</text>
+    </view>
+    <view class="grid-item" bindtap="goMyPosts">
+      <van-icon name="notes-o" size="44rpx" color="#B99A5B" />
+      <text>我的帖子</text>
+      <text class="grid-count">{{postCount}}</text>
+    </view>
+    <view class="grid-item" bindtap="goCards">
+      <van-icon name="flower-o" size="44rpx" color="#B99A5B" />
+      <text>智慧卡片</text>
+    </view>
+  </view>
+
+  <!-- AI 伴修 -->
+  <section-title title="AI 伴修" sub="Awareness Companion" />
+  <view class="card list">
+    <view class="li" bindtap="goCoach">
+      <van-icon name="chat-o" size="38rpx" color="#B99A5B" />
+      <text class="li-label">正念教练 · 对话陪伴</text>
+      <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+    <view class="li" bindtap="goReflection">
+      <van-icon name="edit" size="38rpx" color="#B99A5B" />
+      <text class="li-label">觉察日记 · AI 小结</text>
+      <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+    <view class="li" bindtap="goTree">
+      <van-icon name="flower-o" size="38rpx" color="#B99A5B" />
+      <text class="li-label">觉察之旅 · 成长之树</text>
+      <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+  </view>
+
+  <!-- 设置入口 -->
+  <view class="card list" bindtap="goSettings">
+    <view class="li">
+      <van-icon name="setting-o" size="38rpx" color="#B99A5B" />
+      <text class="li-label">设置</text>
+      <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+  </view>
+</view>

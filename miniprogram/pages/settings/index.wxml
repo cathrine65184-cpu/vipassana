@@ -1,0 +1,48 @@
+<view class="page">
+  <view class="card list">
+    <view class="li" bindtap="darkModeInfo">
+      <van-icon name="eye-o" size="38rpx" color="#B99A5B" />
+      <text class="li-label">深色模式</text>
+      <text class="t-hint">跟随系统</text>
+      <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+    <view class="li" bindtap="pickLanguage">
+      <van-icon name="font-o" size="38rpx" color="#B99A5B" />
+      <text class="li-label">语言</text>
+      <text class="t-hint">{{language}}</text>
+      <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+    <view class="li">
+      <van-icon name="bell" size="38rpx" color="#B99A5B" />
+      <text class="li-label">每日提醒</text>
+      <switch checked="{{notification}}" color="#B99A5B" bindchange="toggleNotification" />
+    </view>
+  </view>
+
+  <view class="card list">
+    <view class="li" bindtap="feedback">
+      <van-icon name="smile-comment-o" size="38rpx" color="#B99A5B" />
+      <text class="li-label">意见反馈</text>
+      <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+    <view class="li" bindtap="about">
+      <van-icon name="info-o" size="38rpx" color="#B99A5B" />
+      <text class="li-label">关于</text>
+      <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+    <view class="li" bindtap="privacy">
+      <van-icon name="shield-o" size="38rpx" color="#B99A5B" />
+      <text class="li-label">隐私政策</text>
+      <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+  </view>
+
+  <view class="card list">
+    <view class="li danger" bindtap="clearData">
+      <van-icon name="delete-o" size="38rpx" color="#C0392B" />
+      <text class="li-label">清除本地数据</text>
+    </view>
+  </view>
+
+  <view class="version t-hint">应无所住 · VIPASSANA v1.0.0</view>
+</view>

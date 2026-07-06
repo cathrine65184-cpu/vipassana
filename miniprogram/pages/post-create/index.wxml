@@ -1,0 +1,47 @@
+<view class="page">
+  <view class="card">
+    <input class="title-input" placeholder="标题：今天觉察到什么？" value="{{title}}" bindinput="onTitle" maxlength="40" />
+    <textarea
+      class="content-input"
+      placeholder="写下你的心得、冥想日记或今日反思…&#10;&#10;温柔地对待每一个念头。"
+      value="{{content}}"
+      bindinput="onContent"
+      maxlength="2000"
+      auto-height
+    ></textarea>
+    <view class="img-add" bindtap="chooseImage">
+      <van-icon name="photograph" size="40rpx" color="rgba(32,50,40,0.35)" />
+      <text>添加图片</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="t-title">选择话题<text class="t-hint">（最多 3 个）</text></view>
+    <view class="tag-list">
+      <view
+        wx:for="{{tags}}"
+        wx:key="*this"
+        class="chip {{selected.indexOf(item) >= 0 ? 'active' : ''}}"
+        data-tag="{{item}}"
+        bindtap="toggleTag"
+      >{{item}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="t-title">封面色调</view>
+    <view class="cover-list">
+      <view
+        wx:for="{{covers}}"
+        wx:key="*this"
+        class="cover-opt {{item}} {{cover === item ? 'on' : ''}}"
+        data-cover="{{item}}"
+        bindtap="pickCover"
+      >
+        <van-icon wx:if="{{cover === item}}" name="success" color="#F7F4EE" size="32rpx" />
+      </view>
+    </view>
+  </view>
+
+  <view class="btn btn-primary publish" bindtap="publish">发布</view>
+</view>

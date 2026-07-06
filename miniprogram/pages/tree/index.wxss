@@ -1,0 +1,78 @@
+.stage-label { text-align: center; font-size: 40rpx; margin-top: 24rpx; }
+.center { text-align: center; margin-top: 8rpx; }
+
+.tree-box {
+  position: relative;
+  height: 640rpx;
+  margin: 40rpx 24rpx 0;
+  background: linear-gradient(180deg, transparent 0%, var(--gold-soft) 130%);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.ground {
+  position: absolute;
+  bottom: -60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 560rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: var(--forest-2);
+  opacity: 0.25;
+}
+
+.trunk {
+  position: absolute;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26rpx;
+  height: 46%;
+  border-radius: 999rpx;
+  background: linear-gradient(180deg, #6E5844, #4C3B2C);
+}
+
+.branch {
+  position: absolute;
+  width: 16rpx;
+  height: 160rpx;
+  border-radius: 999rpx;
+  background: #5C4736;
+}
+.b1 { left: 42%; top: 34%; transform: rotate(38deg); }
+.b2 { left: 55%; top: 26%; transform: rotate(-34deg); }
+
+.leaf {
+  position: absolute;
+  width: 44rpx;
+  height: 44rpx;
+  background: linear-gradient(135deg, #8FB48A, #4C6B4F);
+  border-radius: 0 60% 0 60%;
+  transform: rotate(20deg) scale(0);
+  animation: grow 0.6s ease forwards;
+  box-shadow: 0 4rpx 12rpx rgba(32, 50, 40, 0.18);
+}
+
+.flower {
+  position: absolute;
+  font-size: 40rpx;
+  color: #D9A7B0;
+  transform: scale(0);
+  animation: grow 0.6s ease forwards;
+}
+
+@keyframes grow {
+  0% { transform: scale(0) rotate(0deg); }
+  70% { transform: scale(1.2) rotate(24deg); }
+  100% { transform: scale(1) rotate(20deg); }
+}
+
+.hint { text-align: center; margin-top: 24rpx; }
+
+.stats { display: flex; justify-content: space-around; margin-top: 32rpx; }
+.stat { display: flex; flex-direction: column; align-items: center; }
+.stat-num { font-size: 40rpx; font-weight: 700; }
+
+.acts { display: flex; gap: 20rpx; margin-top: 32rpx; }
+.act { flex: 1; }

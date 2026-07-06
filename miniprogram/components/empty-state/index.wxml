@@ -1,0 +1,6 @@
+<view class="empty">
+  <view class="empty-icon"><van-icon name="{{icon}}" size="56rpx" color="#B99A5B" /></view>
+  <view class="empty-title">{{title}}</view>
+  <view wx:if="{{desc}}" class="empty-desc">{{desc}}</view>
+  <slot />
+</view>

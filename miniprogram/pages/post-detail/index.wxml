@@ -1,0 +1,61 @@
+<view class="page" wx:if="{{post}}">
+
+  <!-- 作者栏 -->
+  <view class="author-bar">
+    <view class="author-left">
+      <view class="avatar {{post.avatarBg}}"></view>
+      <view>
+        <view class="author-name">{{post.author}}</view>
+        <view class="t-hint">{{post.time}}</view>
+      </view>
+    </view>
+    <view class="follow-btn {{following ? 'on' : ''}}" bindtap="toggleFollow">
+      {{following ? '已关注' : '+ 关注'}}
+    </view>
+  </view>
+
+  <!-- 正文 -->
+  <view class="card">
+    <view class="post-title display">{{post.title}}</view>
+    <view wx:if="{{post.cover}}" class="post-cover cover {{post.cover}}"></view>
+    <view wx:for="{{post.content}}" wx:key="*this" class="para">{{item}}</view>
+    <view class="tags">
+      <text wx:for="{{post.tags}}" wx:key="*this" class="tag">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 互动栏 -->
+  <view class="actions card">
+    <view class="action {{liked ? 'on' : ''}}" bindtap="toggleLike">
+      <van-icon name="{{liked ? 'like' : 'like-o'}}" size="40rpx" />
+      <text>{{likes}}</text>
+    </view>
+    <view class="action {{bookmarked ? 'on' : ''}}" bindtap="toggleBookmark">
+      <van-icon name="{{bookmarked ? 'star' : 'star-o'}}" size="40rpx" />
+      <text>收藏</text>
+    </view>
+    <button class="action share-btn" open-type="share">
+      <van-icon name="share-o" size="40rpx" />
+      <text>分享</text>
+    </button>
+  </view>
+
+  <!-- 评论 -->
+  <view class="card">
+    <view class="t-title">评论 {{comments.length}}</view>
+    <view wx:for="{{comments}}" wx:key="id" class="comment">
+      <view class="comment-head">
+        <text class="comment-author">{{item.author}}</text>
+        <text class="t-hint">{{item.time}}</text>
+      </view>
+      <view class="comment-body">{{item.content}}</view>
+    </view>
+    <empty-state wx:if="{{!comments.length}}" icon="chat-o" title="还没有评论" desc="说点温柔的话吧" />
+  </view>
+
+  <!-- 评论输入 -->
+  <view class="comment-bar safe-bottom">
+    <input class="comment-input" placeholder="写下你的回应…" value="{{input}}" bindinput="onInput" confirm-type="send" bindconfirm="sendComment" />
+    <view class="comment-send" bindtap="sendComment">发送</view>
+  </view>
+</view>

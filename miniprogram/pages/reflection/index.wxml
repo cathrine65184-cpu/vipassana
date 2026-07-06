@@ -1,0 +1,54 @@
+<view class="page">
+
+  <view class="card">
+    <view class="t-title">今天，你觉察到了什么？</view>
+    <textarea
+      class="editor"
+      placeholder="写下今天的心情、念头、身体的感受…&#10;不需要好文笔，诚实就好。"
+      value="{{text}}"
+      bindinput="onInput"
+      maxlength="2000"
+      auto-height
+    ></textarea>
+    <view class="btn btn-primary" bindtap="analyze">
+      {{analyzing ? '正在轻轻阅读…' : '保存并生成 AI 觉察小结'}}
+    </view>
+  </view>
+
+  <!-- 最新小结 -->
+  <view wx:if="{{result}}" class="card result">
+    <view class="result-head">
+      <van-icon name="flower-o" color="#B99A5B" size="34rpx" />
+      <text class="t-title t-gold">AI 觉察小结</text>
+    </view>
+    <view class="emos">
+      <text wx:for="{{result.emotions}}" wx:key="*this" class="emo-tag">{{item}}</text>
+    </view>
+    <view class="summary">{{result.summary}}</view>
+  </view>
+
+  <!-- 历史 -->
+  <section-title wx:if="{{history.length}}" title="日记本" sub="Journal" />
+  <view
+    wx:for="{{history}}"
+    wx:key="id"
+    class="card entry fade-item"
+  >
+    <view class="entry-head">
+      <text class="entry-date">{{item.date}}</text>
+      <van-icon name="delete-o" size="30rpx" color="rgba(32,50,40,0.3)" data-id="{{item.id}}" catchtap="removeEntry" />
+    </view>
+    <view class="entry-text">{{item.text}}</view>
+    <view class="entry-summary">
+      <van-icon name="flower-o" size="24rpx" color="#B99A5B" />
+      <text>{{item.summary}}</text>
+    </view>
+  </view>
+
+  <empty-state
+    wx:if="{{!history.length && !result}}"
+    icon="edit"
+    title="日记本还空着"
+    desc="第一篇，从今天的一个小觉察开始"
+  />
+</view>

@@ -1,0 +1,32 @@
+.bar-wrap {
+  position: fixed;
+  left: 24rpx;
+  right: 24rpx;
+  bottom: calc(20rpx + env(safe-area-inset-bottom));
+  z-index: 100;
+}
+
+.bar {
+  display: flex;
+  background: var(--card, #FFFFFF);
+  border-radius: 44rpx;
+  box-shadow: 0 16rpx 48rpx rgba(32, 50, 40, 0.14);
+  padding: 16rpx 8rpx;
+}
+
+.bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rpx;
+  color: var(--ink-3, rgba(32, 50, 40, 0.38));
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.bar-item.on {
+  color: var(--forest, #203228);
+  transform: translateY(-4rpx);
+}
+
+.bar-text { font-size: 20rpx; }

@@ -1,0 +1,86 @@
+<view class="page" wx:if="{{course}}">
+
+  <!-- 封面 -->
+  <view class="hero cover {{course.cover}}">
+    <text class="hero-order display">{{course.order}}</text>
+    <view class="hero-title display">{{course.title}}</view>
+    <view class="hero-sub">{{course.subtitle}}</view>
+    <view class="hero-diff">{{course.difficulty}}</view>
+  </view>
+
+  <!-- 简介 -->
+  <view class="card">
+    <view class="t-title">课程介绍</view>
+    <view class="desc">{{course.desc}}</view>
+    <view class="teachers">
+      <view wx:for="{{course.teachers}}" wx:key="*this" class="teacher">
+        <van-icon name="user-circle-o" size="30rpx" color="#B99A5B" />
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 包含内容 -->
+  <view class="card">
+    <view class="t-title">课程包含</view>
+    <view wx:for="{{course.includes}}" wx:key="*this" class="row">
+      <van-icon name="success" size="26rpx" color="#B99A5B" />
+      <text>{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 适合人群 -->
+  <view class="card">
+    <view class="t-title">适合人群</view>
+    <view wx:for="{{course.audience}}" wx:key="*this" class="row">
+      <van-icon name="flower-o" size="26rpx" color="#B99A5B" />
+      <text>{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 章节 -->
+  <view class="card">
+    <view class="chapter-head">
+      <view class="t-title">章节目录</view>
+      <text class="t-hint">{{doneCount}}/{{chapters.length}} 已完成</text>
+    </view>
+    <view
+      wx:for="{{chapters}}"
+      wx:key="id"
+      class="chapter {{item.locked ? 'locked' : ''}}"
+      data-id="{{item.id}}"
+      data-locked="{{item.locked}}"
+      data-done="{{item.done}}"
+      bindtap="tapChapter"
+    >
+      <view class="chapter-icon {{item.done ? 'done' : ''}}">
+        <van-icon name="{{item.done ? 'success' : item.meta.icon}}" size="30rpx" />
+      </view>
+      <view class="chapter-info">
+        <view class="chapter-title">{{item.title}}</view>
+        <view class="t-hint">{{item.meta.label}} · {{item.duration}}<text wx:if="{{item.free}}" class="free-tag">试学</text></view>
+      </view>
+      <van-icon wx:if="{{item.locked}}" name="lock" size="30rpx" color="#B99A5B" />
+      <van-icon wx:else name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+  </view>
+
+  <!-- 完课徽章 -->
+  <view class="card badge-card" wx:if="{{badgeEarned}}">
+    <van-icon name="medal-o" size="56rpx" color="#B99A5B" />
+    <view>
+      <view class="t-title t-gold">徽章「{{course.badge}}」已点亮</view>
+      <view class="t-hint">完成全部章节 · 愿你安住</view>
+    </view>
+  </view>
+
+  <!-- 底部购买栏 -->
+  <view class="buybar safe-bottom" wx:if="{{!unlocked}}">
+    <view class="buybar-price">
+      <text class="buybar-num">¥{{course.price}}</text>
+      <text class="buybar-unit">{{course.priceUnit}}</text>
+      <view wx:if="{{course.priceNote}}" class="t-hint">{{course.priceNote}}</view>
+    </view>
+    <view class="btn btn-primary buybar-btn" bindtap="buy">立即解锁</view>
+  </view>
+</view>

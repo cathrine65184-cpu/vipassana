@@ -1,0 +1,12 @@
+# dependencies
+node_modules/
+miniprogram/node_modules/
+
+# devtools private config (contains local settings, safe to regenerate)
+project.private.config.json
+
+# system
+.DS_Store
+
+# cloud function deps
+cloudfunctions/**/node_modules/

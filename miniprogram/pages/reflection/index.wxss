@@ -1,0 +1,42 @@
+.editor {
+  width: 100%;
+  min-height: 260rpx;
+  margin: 24rpx 0 32rpx;
+  font-size: 28rpx;
+  line-height: 1.9;
+}
+
+.result { background: linear-gradient(150deg, var(--card) 40%, var(--gold-soft) 130%); }
+.result-head { display: flex; align-items: center; gap: 12rpx; }
+.emos { display: flex; gap: 12rpx; margin-top: 24rpx; flex-wrap: wrap; }
+.emo-tag {
+  background: var(--gold-soft);
+  color: var(--gold);
+  font-size: 23rpx;
+  padding: 6rpx 24rpx;
+  border-radius: 999rpx;
+}
+.summary { margin-top: 24rpx; font-size: 27rpx; line-height: 2; color: var(--ink-2); }
+
+.entry-head { display: flex; align-items: center; justify-content: space-between; }
+.entry-date { font-size: 24rpx; color: var(--gold); }
+.entry-text {
+  margin-top: 16rpx;
+  font-size: 27rpx;
+  color: var(--ink);
+  line-height: 1.9;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.entry-summary {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 2rpx solid var(--line);
+  display: flex;
+  gap: 12rpx;
+  font-size: 24rpx;
+  color: var(--ink-2);
+  line-height: 1.8;
+}

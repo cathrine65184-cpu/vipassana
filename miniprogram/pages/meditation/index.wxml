@@ -1,0 +1,124 @@
+<view class="page">
+  <view class="head">
+    <view class="head-title display">冥想音频 · 每日打卡</view>
+    <view class="t-sub">每日练习，培养正念习惯</view>
+  </view>
+
+  <block wx:if="{{loading}}">
+    <view class="skeleton sk-hero"></view>
+    <view class="skeleton sk-row"></view>
+  </block>
+
+  <block wx:else>
+    <!-- 推荐 / 继续聆听 -->
+    <view class="reco cover {{continueItem.cover}}" data-id="{{continueItem.id}}" bindtap="goPlay">
+      <view class="reco-info">
+        <view class="reco-title display">{{continueItem.title}}</view>
+        <view class="reco-sub">{{continueItem.minutes}} 分钟 · {{continueItem.category}}</view>
+        <view class="reco-btn">
+          <van-icon name="play-circle-o" size="34rpx" />
+          <text>继续聆听</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 特殊模式入口 -->
+    <view class="modes">
+      <view class="mode card" bindtap="goSilent">
+        <van-icon name="closed-eye" size="44rpx" color="#B99A5B" />
+        <view class="mode-name">静默模式</view>
+        <view class="t-hint">只有呼吸与计时</view>
+      </view>
+      <view class="mode card" bindtap="goRetreat">
+        <van-icon name="shrink" size="44rpx" color="#B99A5B" />
+        <view class="mode-name">禅修营模式</view>
+        <view class="t-hint">十日内观日程</view>
+      </view>
+    </view>
+
+    <!-- 情绪识别（AI）-->
+    <section-title title="此刻的心情" sub="AI Emotion Check-in" />
+    <view class="card">
+      <view class="emo-list">
+        <view
+          wx:for="{{emotions}}"
+          wx:key="id"
+          class="emo {{pickedEmotion.id === item.id ? 'on' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="pickEmotion"
+        >
+          <text class="emo-emoji">{{item.emoji}}</text>
+          <text class="emo-label">{{item.label}}</text>
+        </view>
+      </view>
+      <view wx:if="{{pickedEmotion}}" class="emo-reply">
+        <view class="emo-reply-text">{{pickedEmotion.reply}}</view>
+        <view class="emo-reco" data-id="{{recommend.id}}" bindtap="goPlay">
+          <view class="emo-reco-cover cover {{recommend.cover}}">
+            <van-icon name="play" color="#F7F4EE" size="30rpx" />
+          </view>
+          <view class="emo-reco-info">
+            <view class="emo-reco-title">为你推荐：{{recommend.title}}</view>
+            <view class="t-hint">{{recommend.minutes}} 分钟 · {{recommend.category}}</view>
+          </view>
+          <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+        </view>
+      </view>
+    </view>
+
+    <!-- 分类 -->
+    <section-title title="冥想分类" sub="Categories" />
+    <scroll-view scroll-x class="cats" enhanced show-scrollbar="{{false}}">
+      <view
+        wx:for="{{categories}}"
+        wx:key="*this"
+        class="chip {{cat === item ? 'active' : ''}}"
+        data-cat="{{item}}"
+        bindtap="pickCat"
+      >{{item}}</view>
+    </scroll-view>
+
+    <view class="med-list">
+      <view
+        wx:for="{{list}}"
+        wx:key="id"
+        class="card med fade-item"
+        data-id="{{item.id}}"
+        bindtap="goPlay"
+      >
+        <view class="med-cover cover {{item.cover}}">
+          <van-icon name="play" color="#F7F4EE" size="36rpx" />
+        </view>
+        <view class="med-info">
+          <view class="med-title">{{item.title}}<text wx:if="{{item.vip}}" class="vip-tag">VIP</text></view>
+          <view class="t-hint">{{item.minutes}} 分钟 · {{item.category}}</view>
+          <view class="med-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 今日打卡 -->
+    <section-title title="今日打卡" sub="Daily Check-in" more="查看全部" url="/pages/checkin/index" />
+    <view class="card checkin" bindtap="goCheckin">
+      <view class="checkin-row">
+        <view class="checkin-stat">
+          <text class="checkin-num">{{streak}}</text>
+          <text class="t-hint">连续天数</text>
+        </view>
+        <view class="checkin-stat">
+          <text class="checkin-num">{{totalMinutes}}</text>
+          <text class="t-hint">总时长（分钟）</text>
+        </view>
+        <view class="checkin-state {{checked ? 'done' : ''}}">{{checked ? '已打卡' : '未打卡'}}</view>
+      </view>
+      <view class="week">
+        <view wx:for="{{week}}" wx:key="label" class="week-day">
+          <view class="week-dot {{item.done ? 'done' : ''}} {{item.isToday ? 'today' : ''}}">
+            <van-icon wx:if="{{item.done}}" name="success" size="22rpx" color="#F7F4EE" />
+          </view>
+          <text class="week-label">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,53 @@
+.head { color: #F7F4EE; }
+.head-title { font-size: 42rpx; }
+.head-sub { margin-top: 8rpx; font-size: 24rpx; opacity: 0.72; }
+.day-now { margin-top: 32rpx; font-size: 28rpx; }
+.day-bar {
+  margin-top: 16rpx;
+  height: 10rpx;
+  background: rgba(247, 244, 238, 0.2);
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+.day-in { height: 100%; background: #B99A5B; border-radius: 999rpx; }
+.start-btn {
+  margin-top: 36rpx;
+  background: #F7F4EE;
+  color: #203228;
+  text-align: center;
+  padding: 22rpx 0;
+  border-radius: 999rpx;
+  font-size: 29rpx;
+}
+
+.row-card { display: flex; align-items: center; gap: 24rpx; }
+.row-text { flex: 1; }
+.row-title { font-size: 28rpx; font-weight: 600; }
+
+.sch { display: flex; gap: 32rpx; padding: 18rpx 0; border-bottom: 2rpx solid var(--line); }
+.sch:last-child { border-bottom: none; }
+.sch-time { width: 220rpx; font-size: 25rpx; color: var(--gold); flex-shrink: 0; }
+.sch-item { font-size: 26rpx; color: var(--ink-2); }
+
+.day-card { transition: all 0.25s ease; }
+.day-card.now { border: 3rpx solid var(--gold); }
+.day-card.past { opacity: 0.6; }
+.day-head { display: flex; align-items: center; gap: 24rpx; }
+.day-no { font-size: 30rpx; color: var(--gold); width: 130rpx; }
+.day-theme { flex: 1; font-size: 29rpx; font-weight: 600; }
+.day-focus {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 2rpx solid var(--line);
+  font-size: 26rpx;
+  color: var(--ink-2);
+  line-height: 1.9;
+}
+
+.quit {
+  text-align: center;
+  color: #C0392B;
+  font-size: 26rpx;
+  margin-top: 40rpx;
+  opacity: 0.8;
+}

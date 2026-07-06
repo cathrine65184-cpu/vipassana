@@ -1,0 +1,62 @@
+<view class="page">
+
+  <!-- 状态卡 -->
+  <view class="card head cover g-forest">
+    <view class="head-title display">十日内观禅修营</view>
+    <view class="head-sub">结构化日程 · 禁语提醒 · 离线可用</view>
+    <block wx:if="{{currentDay > 0}}">
+      <view class="day-now">第 {{currentDay}} 天 · {{days[currentDay - 1].theme}}</view>
+      <view class="day-bar">
+        <view class="day-in" style="width:{{currentDay * 10}}%"></view>
+      </view>
+    </block>
+    <view wx:else class="start-btn" bindtap="start">开始禅修营</view>
+  </view>
+
+  <!-- 禁语提醒 -->
+  <view class="card row-card" wx:if="{{currentDay > 0}}">
+    <van-icon name="volume" size="38rpx" color="#B99A5B" />
+    <view class="row-text">
+      <view class="row-title">禁语提醒</view>
+      <view class="t-hint">整点轻声提醒保持静默（演示：接入订阅消息后推送）</view>
+    </view>
+    <switch checked="{{silenceOn}}" color="#B99A5B" bindchange="toggleSilence" />
+  </view>
+
+  <!-- 每日日程 -->
+  <view class="card row-card" wx:if="{{currentDay > 0}}" bindtap="goSilent">
+    <van-icon name="closed-eye" size="38rpx" color="#B99A5B" />
+    <view class="row-text">
+      <view class="row-title">进入静坐</view>
+      <view class="t-hint">按日程开始一坐，自动计入打卡</view>
+    </view>
+    <van-icon name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
+  </view>
+
+  <section-title title="日程表" sub="每日作息（可离线查看）" />
+  <view class="card">
+    <view wx:for="{{schedule}}" wx:key="time" class="sch">
+      <text class="sch-time">{{item.time}}</text>
+      <text class="sch-item">{{item.item}}</text>
+    </view>
+  </view>
+
+  <section-title title="十日地图" sub="每一天的主题与练习重点" />
+  <view
+    wx:for="{{days}}"
+    wx:key="day"
+    class="card day-card {{currentDay === item.day ? 'now' : ''}} {{currentDay > 0 && item.day < currentDay ? 'past' : ''}}"
+    data-day="{{item.day}}"
+    bindtap="expand"
+  >
+    <view class="day-head">
+      <view class="day-no display">Day {{item.day}}</view>
+      <view class="day-theme">{{item.theme}}</view>
+      <van-icon wx:if="{{currentDay > 0 && item.day < currentDay}}" name="success" color="#B99A5B" size="30rpx" />
+      <van-icon wx:else name="{{expanded === item.day ? 'arrow-up' : 'arrow-down'}}" size="26rpx" color="rgba(32,50,40,0.3)" />
+    </view>
+    <view wx:if="{{expanded === item.day}}" class="day-focus">{{item.focus}}</view>
+  </view>
+
+  <view class="quit" wx:if="{{currentDay > 0}}" bindtap="quit">结束禅修营</view>
+</view>

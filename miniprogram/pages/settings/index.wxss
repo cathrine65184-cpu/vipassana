@@ -1,0 +1,12 @@
+.list { padding: 8rpx 32rpx; }
+.li {
+  display: flex;
+  align-items: center;
+  gap: 22rpx;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid var(--line);
+}
+.list .li:last-child { border-bottom: none; }
+.li-label { flex: 1; font-size: 28rpx; }
+.li.danger .li-label { color: #C0392B; }
+.version { text-align: center; margin-top: 48rpx; }

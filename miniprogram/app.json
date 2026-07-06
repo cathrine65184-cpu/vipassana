@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/courses/index",
+    "pages/community/index",
+    "pages/meditation/index",
+    "pages/profile/index",
+    "pages/course-detail/index",
+    "pages/player/index",
+    "pages/post-detail/index",
+    "pages/post-create/index",
+    "pages/checkin/index",
+    "pages/vip/index",
+    "pages/settings/index",
+    "pages/coach/index",
+    "pages/reflection/index",
+    "pages/tree/index",
+    "pages/cards/index",
+    "pages/silent/index",
+    "pages/retreat/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "@navBgColor",
+    "navigationBarTextStyle": "@navTxtStyle",
+    "navigationBarTitleText": "应无所住",
+    "backgroundColor": "@bgColor",
+    "backgroundTextStyle": "@bgTxtStyle",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8A9388",
+    "selectedColor": "#203228",
+    "backgroundColor": "#F7F4EE",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "首页" },
+      { "pagePath": "pages/courses/index", "text": "课程" },
+      { "pagePath": "pages/community/index", "text": "社区" },
+      { "pagePath": "pages/meditation/index", "text": "冥想" },
+      { "pagePath": "pages/profile/index", "text": "我的" }
+    ]
+  },
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "progress-ring": "/components/progress-ring/index",
+    "empty-state": "/components/empty-state/index",
+    "section-title": "/components/section-title/index"
+  },
+  "darkmode": true,
+  "themeLocation": "theme.json",
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
