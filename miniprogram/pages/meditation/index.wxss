@@ -1,5 +1,6 @@
 .head { margin: 16rpx 8rpx 28rpx; }
-.head-title { font-size: 42rpx; }
+.head-title { font-size: 42rpx; font-weight: 700; letter-spacing: 2rpx; }
+.head .t-sub { margin-top: 10rpx; }
 
 .sk-hero { height: 480rpx; border-radius: var(--radius); margin-bottom: 24rpx; }
 .sk-row { height: 160rpx; border-radius: var(--radius); }
@@ -57,6 +58,18 @@
   gap: 90rpx;
   margin-top: 28rpx;
 }
+
+/* ⏮ / ⏭ 跳转图标（CSS 绘制，白描边风格） */
+.skip { display: flex; align-items: center; gap: 4rpx; padding: 16rpx; }
+.skip-bar {
+  width: 6rpx;
+  height: 30rpx;
+  border-radius: 3rpx;
+  background: rgba(250, 248, 242, 0.88);
+}
+.skip-tri { width: 0; height: 0; border-top: 16rpx solid transparent; border-bottom: 16rpx solid transparent; }
+.skip-tri.left { border-right: 24rpx solid rgba(250, 248, 242, 0.88); }
+.skip-tri.right { border-left: 24rpx solid rgba(250, 248, 242, 0.88); }
 .player-play {
   width: 116rpx;
   height: 116rpx;
@@ -104,7 +117,7 @@
   align-items: center;
   justify-content: center;
 }
-.week-dot.done { background: #A8B99A; border-color: #A8B99A; }
+.week-dot.done { background: var(--sage); border-color: var(--sage); }
 .week-dot.today { box-shadow: 0 0 0 4rpx var(--gold-soft); }
 .week-label { font-size: 22rpx; color: var(--ink-3); }
 

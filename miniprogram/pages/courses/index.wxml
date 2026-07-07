@@ -1,6 +1,6 @@
 <view class="page">
   <view class="head">
-    <view class="head-title display">付费课程</view>
+    <view class="head-title">付费课程</view>
     <view class="t-sub">系统学习内观与正念</view>
   </view>
 

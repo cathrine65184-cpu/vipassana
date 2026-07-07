@@ -1,12 +1,13 @@
 .home { min-height: 100vh; background: var(--beige); }
 
-/* ---------------- Hero：照片 + 暗色渐变（设计稿同款） ---------------- */
+/* ---------------- Hero：整屏照片（设计稿：首屏即全幅照片） ---------------- */
 .hero {
   position: relative;
   overflow: hidden;
-  border-radius: 0 0 48rpx 48rpx;
+  min-height: 100vh;
   /* 照片加载失败时的兜底底色 */
   background: linear-gradient(160deg, #24382C 0%, #203228 45%, #131F18 100%);
+  box-sizing: border-box;
 }
 
 .hero-photo {
@@ -20,41 +21,43 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(14, 21, 17, 0.55) 0%, rgba(14, 21, 17, 0.15) 30%, rgba(14, 21, 17, 0.35) 62%, rgba(14, 21, 17, 0.82) 100%);
+    linear-gradient(180deg, rgba(10, 14, 9, 0.5) 0%, rgba(10, 14, 9, 0.12) 32%, rgba(10, 14, 9, 0.3) 60%, rgba(10, 14, 9, 0.66) 100%);
 }
 
 .hero-content {
   position: relative;
-  padding-left: 40rpx;
-  padding-right: 40rpx;
-  padding-bottom: 48rpx;
+  min-height: 100vh;
+  padding-left: 36rpx;
+  padding-right: 36rpx;
+  padding-bottom: 230rpx; /* 为悬浮 TabBar 留出（设计稿 TabBar 悬浮于照片上） */
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .hero-brand-name {
-  color: rgba(247, 244, 238, 0.92);
+  color: rgba(250, 248, 242, 0.9);
   font-size: 34rpx;
   letter-spacing: 8rpx;
   font-weight: 600;
 }
 .hero-brand-sub {
-  color: rgba(247, 244, 238, 0.62);
-  font-size: 24rpx;
-  letter-spacing: 4rpx;
-  margin-top: 6rpx;
+  color: rgba(250, 248, 242, 0.6);
+  font-size: 26rpx;
+  letter-spacing: 5rpx;
+  margin-top: 8rpx;
 }
 
 .hero-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 36rpx;
+  margin-top: auto;
 }
 
 .hero-logo {
-  width: 260rpx;
-  height: 260rpx;
+  width: 250rpx;
+  height: 250rpx;
   animation: breathe 6s ease-in-out infinite;
 }
 
@@ -64,72 +67,73 @@
 }
 
 .hero-slogan {
-  color: #F7F4EE;
-  font-size: 76rpx;
-  margin-top: 16rpx;
-  letter-spacing: 14rpx;
-  text-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.4);
+  color: #FAF8F2;
+  font-size: 80rpx;
+  font-weight: 700;
+  margin-top: 12rpx;
+  letter-spacing: 10rpx;
+  text-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.45);
 }
 
 .hero-en {
-  color: rgba(247, 244, 238, 0.75);
-  font-size: 28rpx;
+  color: rgba(250, 248, 242, 0.85);
+  font-size: 30rpx;
   font-style: italic;
-  margin-top: 10rpx;
+  font-family: Georgia, "Songti SC", serif;
+  margin-top: 8rpx;
 }
 
-/* 毛玻璃卡（速览 / 禅语共用） */
+/* 毛玻璃卡（速览 / 禅语共用，设计稿：深色半透明 + 大圆角） */
 .glass {
-  margin-top: 40rpx;
-  background: rgba(18, 26, 21, 0.52);
-  backdrop-filter: blur(16px);
-  border: 2rpx solid rgba(247, 244, 238, 0.08);
+  margin-top: 36rpx;
+  background: rgba(14, 18, 11, 0.62);
+  backdrop-filter: blur(20px);
   border-radius: 36rpx;
-  box-shadow: 0 16rpx 48rpx rgba(0, 0, 0, 0.25);
 }
 
-/* 四支柱速览：圆形描边图标 */
+/* 四支柱速览：细描边圆形图标 */
 .pillars-quick {
   display: flex;
   justify-content: space-around;
-  padding: 36rpx 24rpx;
+  padding: 40rpx 28rpx 36rpx;
+  margin-top: 56rpx;
 }
 .quick {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16rpx;
+  gap: 20rpx;
   transition: transform 0.15s ease;
 }
 .quick:active { transform: scale(0.94); }
 .quick-ring {
-  width: 96rpx;
-  height: 96rpx;
+  width: 92rpx;
+  height: 92rpx;
   border-radius: 50%;
-  border: 2rpx solid rgba(247, 244, 238, 0.45);
-  background: rgba(247, 244, 238, 0.06);
+  border: 2rpx solid rgba(250, 248, 242, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .quick-label {
-  color: rgba(247, 244, 238, 0.9);
-  font-size: 26rpx;
+  color: rgba(250, 248, 242, 0.92);
+  font-size: 28rpx;
   letter-spacing: 2rpx;
 }
 
 /* 禅语轮播 */
-.quote-glass { position: relative; padding: 44rpx 48rpx 40rpx; }
+.quote-glass { position: relative; padding: 48rpx 52rpx 42rpx; }
 .quote-mark {
   position: absolute;
-  font-size: 72rpx;
-  color: rgba(247, 244, 238, 0.4);
+  font-size: 68rpx;
+  font-family: Georgia, serif;
+  color: rgba(250, 248, 242, 0.5);
   line-height: 1;
 }
-.qm-l { top: 24rpx; left: 32rpx; }
-.qm-r { bottom: 48rpx; right: 32rpx; }
+.qm-l { top: 30rpx; left: 36rpx; }
+.qm-r { bottom: 56rpx; right: 36rpx; }
 
-.quote-swiper { height: 200rpx; }
+.quote-swiper { height: 210rpx; }
 .quote-slide {
   height: 100%;
   display: flex;
@@ -137,27 +141,28 @@
   justify-content: center;
 }
 .quote-text {
-  color: rgba(247, 244, 238, 0.92);
-  font-size: 28rpx;
-  line-height: 2;
+  color: rgba(250, 248, 242, 0.94);
+  font-size: 29rpx;
+  line-height: 2.1;
+  letter-spacing: 2rpx;
   text-align: center;
-  padding: 0 20rpx;
+  padding: 0 16rpx;
 }
 
 .quote-dots {
   display: flex;
   justify-content: center;
-  gap: 12rpx;
-  margin-top: 8rpx;
+  gap: 14rpx;
+  margin-top: 10rpx;
 }
 .qdot {
-  width: 10rpx;
-  height: 10rpx;
+  width: 11rpx;
+  height: 11rpx;
   border-radius: 50%;
-  background: rgba(247, 244, 238, 0.3);
+  background: rgba(250, 248, 242, 0.32);
   transition: all 0.3s ease;
 }
-.qdot.on { background: rgba(247, 244, 238, 0.9); width: 28rpx; border-radius: 999rpx; }
+.qdot.on { background: rgba(250, 248, 242, 0.92); }
 
 /* ---------------- Body ---------------- */
 .body { padding: 8rpx 32rpx 220rpx; }
@@ -273,6 +278,6 @@
   justify-content: center;
   background: var(--card-soft);
 }
-.week-dot.done { background: var(--forest); border-color: var(--forest); }
+.week-dot.done { background: var(--sage); border-color: var(--sage); }
 .week-dot.today { box-shadow: 0 0 0 4rpx var(--gold-soft); }
 .week-label { font-size: 22rpx; color: var(--ink-3); }

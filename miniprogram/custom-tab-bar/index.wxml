@@ -7,7 +7,14 @@
       data-index="{{index}}"
       bindtap="onTap"
     >
-      <van-icon name="{{active === index ? item.iconActive : item.icon}}" size="44rpx" />
+      <!-- 激活态：绿色圆角方块 + 白色图标（设计稿同款） -->
+      <view class="bar-icon {{active === index ? 'on' : ''}}">
+        <van-icon
+          name="{{item.icon}}"
+          size="40rpx"
+          color="{{active === index ? '#F7F4EE' : 'rgba(31,41,31,0.55)'}}"
+        />
+      </view>
       <text class="bar-text">{{item.text}}</text>
     </view>
   </view>

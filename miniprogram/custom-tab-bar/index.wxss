@@ -8,10 +8,10 @@
 
 .bar {
   display: flex;
-  background: var(--card, #FFFFFF);
-  border-radius: 44rpx;
-  box-shadow: 0 16rpx 48rpx rgba(32, 50, 40, 0.14);
-  padding: 16rpx 8rpx;
+  background: rgba(251, 250, 244, 0.96);
+  border-radius: 40rpx;
+  box-shadow: 0 16rpx 48rpx rgba(31, 41, 31, 0.16);
+  padding: 18rpx 8rpx 14rpx;
 }
 
 .bar-item {
@@ -19,14 +19,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rpx;
-  color: var(--ink-3, rgba(32, 50, 40, 0.38));
-  transition: color 0.25s ease, transform 0.25s ease;
+  gap: 6rpx;
+  color: rgba(31, 41, 31, 0.5);
 }
 
-.bar-item.on {
-  color: var(--forest, #203228);
-  transform: translateY(-4rpx);
+/* 图标容器：激活时变为橄榄绿圆角方块 */
+.bar-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.bar-icon.on {
+  background: var(--olive, #57663F);
+  transform: translateY(-2rpx);
 }
 
+.bar-item.on { color: var(--olive, #57663F); }
 .bar-text { font-size: 20rpx; }

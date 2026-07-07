@@ -1,22 +1,10 @@
 <view class="page">
   <view class="head">
-    <view class="head-title display">文章分享 · 小圈子交流</view>
+    <view class="head-title">文章分享 · 小圈子交流</view>
     <view class="t-sub">分享心得，彼此陪伴成长</view>
   </view>
 
-  <!-- 搜索 -->
-  <view class="search">
-    <van-icon name="search" size="30rpx" color="rgba(32,50,40,0.35)" />
-    <input
-      class="search-input"
-      placeholder="搜索帖子、作者"
-      confirm-type="search"
-      bindconfirm="onSearch"
-      bindinput="onSearch"
-    />
-  </view>
-
-  <!-- 排序 Tab（设计稿：推荐 / 最新 / 精华 / 我的圈子） -->
+  <!-- 排序 Tab（设计稿：推荐 / 最新 / 精华 / 我的圈子）+ 右侧搜索开关 -->
   <view class="sort">
     <view
       wx:for="{{tabs}}"
@@ -25,18 +13,34 @@
       data-index="{{index}}"
       bindtap="switchTab"
     >{{item}}</view>
+    <view class="sort-search" bindtap="toggleSearch">
+      <van-icon name="search" size="34rpx" color="rgba(31,41,31,0.45)" />
+    </view>
   </view>
 
-  <!-- 话题标签 -->
-  <scroll-view scroll-x class="tags" enhanced show-scrollbar="{{false}}">
-    <view
-      wx:for="{{hotTags}}"
-      wx:key="*this"
-      class="chip {{tag === item ? 'active' : ''}}"
-      data-tag="{{item}}"
-      bindtap="toggleTag"
-    >{{item}}</view>
-  </scroll-view>
+  <!-- 搜索与话题（默认收起，保持与设计稿一致的版面） -->
+  <block wx:if="{{showSearch}}">
+    <view class="search">
+      <van-icon name="search" size="30rpx" color="rgba(31,41,31,0.35)" />
+      <input
+        class="search-input"
+        placeholder="搜索帖子、作者"
+        confirm-type="search"
+        focus
+        bindconfirm="onSearch"
+        bindinput="onSearch"
+      />
+    </view>
+    <scroll-view scroll-x class="tags" enhanced show-scrollbar="{{false}}">
+      <view
+        wx:for="{{hotTags}}"
+        wx:key="*this"
+        class="chip {{tag === item ? 'active' : ''}}"
+        data-tag="{{item}}"
+        bindtap="toggleTag"
+      >{{item}}</view>
+    </scroll-view>
+  </block>
 
   <!-- 骨架屏 -->
   <block wx:if="{{loading}}">

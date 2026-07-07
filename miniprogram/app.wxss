@@ -4,21 +4,23 @@
  */
 
 page {
-  /* ---- Design Tokens ---- */
+  /* ---- Design Tokens（按设计稿校色） ---- */
   --forest: #203228;          /* 深林绿：主色 */
   --forest-2: #2C4436;        /* 深林绿：浅一档 */
-  --beige: #F7F4EE;           /* 暖米白：页面背景 */
-  --card: #FFFFFF;            /* 卡片 */
-  --card-soft: #FDFCF9;       /* 次级卡片 */
-  --ink: #203228;             /* 主文字 */
-  --ink-2: rgba(32, 50, 40, 0.62);   /* 次文字 */
-  --ink-3: rgba(32, 50, 40, 0.38);   /* 弱文字 */
-  --gold: #B99A5B;            /* 柔金：点缀 */
-  --gold-soft: #EFE6D3;       /* 柔金：底色 */
-  --line: rgba(32, 50, 40, 0.08);    /* 分隔线 */
-  --shadow: 0 12rpx 40rpx rgba(32, 50, 40, 0.07);
-  --radius: 32rpx;
-  --radius-sm: 20rpx;
+  --olive: #57663F;           /* 橄榄绿：激活态 / FAB */
+  --sage: #9FAE83;            /* 鼠尾草绿：打卡完成圈 */
+  --beige: #F2EFE5;           /* 暖米白：页面背景 */
+  --card: #FBFAF4;            /* 卡片：暖白 */
+  --card-soft: #F6F4EB;       /* 次级卡片 */
+  --ink: #1F291F;             /* 主文字：近黑墨绿 */
+  --ink-2: rgba(31, 41, 31, 0.60);   /* 次文字 */
+  --ink-3: rgba(31, 41, 31, 0.38);   /* 弱文字 */
+  --gold: #A68F55;            /* 柔金：点缀 / 锁 */
+  --gold-soft: #EDE6D2;       /* 柔金：底色 */
+  --line: rgba(31, 41, 31, 0.08);    /* 分隔线 */
+  --shadow: 0 10rpx 36rpx rgba(31, 41, 31, 0.06);
+  --radius: 36rpx;
+  --radius-sm: 24rpx;
 
   background: var(--beige);
   color: var(--ink);
@@ -32,6 +34,8 @@ page {
   page {
     --forest: #1C2A22;
     --forest-2: #24382C;
+    --olive: #6E7F52;
+    --sage: #7C8A64;
     --beige: #171E1A;
     --card: #212B24;
     --card-soft: #1D2620;

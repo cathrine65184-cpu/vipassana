@@ -5,11 +5,11 @@ Component({
   data: {
     active: 0,
     list: [
-      { path: '/pages/home/index', icon: 'wap-home-o', iconActive: 'wap-home', text: '首页' },
-      { path: '/pages/courses/index', icon: 'bookmark-o', iconActive: 'bookmark', text: '课程' },
-      { path: '/pages/community/index', icon: 'smile-comment-o', iconActive: 'smile-comment', text: '社区' },
-      { path: '/pages/meditation/index', icon: 'volume-o', iconActive: 'volume', text: '冥想' },
-      { path: '/pages/profile/index', icon: 'contact', iconActive: 'contact', text: '我的' }
+      { path: '/pages/home/index', icon: 'wap-home-o', text: '首页' },
+      { path: '/pages/courses/index', icon: 'bookmark-o', text: '课程' },
+      { path: '/pages/community/index', icon: 'smile-comment-o', text: '社区' },
+      { path: '/pages/meditation/index', icon: 'volume-o', text: '冥想' },
+      { path: '/pages/profile/index', icon: 'contact', text: '我的' }
     ]
   },
 

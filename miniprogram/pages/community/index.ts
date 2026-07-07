@@ -11,6 +11,7 @@ Page({
     tab: 0,
     keyword: '',
     tag: '',
+    showSearch: false,
     hotTags,
     list: [] as any[]   // 单列图文流（设计稿样式）
   },
@@ -58,6 +59,13 @@ Page({
   onSearch(e: any) {
     this.setData({ keyword: e.detail.value })
     this.refresh()
+  },
+
+  toggleSearch() {
+    const showSearch = !this.data.showSearch
+    // 收起时清空筛选，回到与设计稿一致的默认版面
+    this.setData({ showSearch, keyword: showSearch ? this.data.keyword : '', tag: showSearch ? this.data.tag : '' })
+    if (!showSearch) this.refresh()
   },
 
   switchTab(e: any) {

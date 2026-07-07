@@ -1,6 +1,6 @@
 <view class="sec">
   <view class="sec-left">
-    <text class="sec-title display">{{title}}</text>
+    <text class="sec-title">{{title}}</text>
     <text wx:if="{{sub}}" class="sec-sub">{{sub}}</text>
   </view>
   <view wx:if="{{more}}" class="sec-more" bindtap="onMore">

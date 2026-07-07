@@ -1,6 +1,6 @@
 <view class="page">
   <view class="head">
-    <view class="head-title display">冥想音频 · 每日打卡</view>
+    <view class="head-title">冥想音频 · 每日打卡</view>
     <view class="t-sub">每日练习，培养正念习惯</view>
   </view>
 
@@ -31,19 +31,25 @@
         </view>
         <view class="player-times">{{curText}} / {{totalText}}</view>
 
-        <!-- 控制 -->
+        <!-- 控制（设计稿：⏮ ▶ ⏭，白描边） -->
         <view class="player-controls">
-          <van-icon name="arrow-left" size="44rpx" color="rgba(247,244,238,0.85)" bindtap="openPlayer" />
+          <view class="skip" bindtap="openPlayer">
+            <view class="skip-bar"></view>
+            <view class="skip-tri left"></view>
+          </view>
           <view class="player-play" bindtap="openPlayer">
             <van-icon name="play" size="44rpx" color="#F7F4EE" />
           </view>
-          <van-icon name="arrow" size="44rpx" color="rgba(247,244,238,0.85)" bindtap="openPlayer" />
+          <view class="skip" bindtap="openPlayer">
+            <view class="skip-tri right"></view>
+            <view class="skip-bar"></view>
+          </view>
         </view>
 
         <!-- 工具行：列表 / 定时 / 下载 / 收藏 -->
         <view class="player-tools">
           <view class="ptool" bindtap="openPlayer"><van-icon name="bars" size="38rpx" /><text>列表</text></view>
-          <view class="ptool" bindtap="openPlayer"><van-icon name="underway-o" size="38rpx" /><text>定时</text></view>
+          <view class="ptool" bindtap="openPlayer"><van-icon name="clock-o" size="38rpx" /><text>定时</text></view>
           <view class="ptool" bindtap="openPlayer"><van-icon name="down" size="38rpx" /><text>下载</text></view>
           <view class="ptool" bindtap="openPlayer"><van-icon name="like-o" size="38rpx" /><text>收藏</text></view>
         </view>
