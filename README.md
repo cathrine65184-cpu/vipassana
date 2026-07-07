@@ -3,6 +3,8 @@
 > 内观 · 觉知 · 正念 · 自由
 > *it is what it is*
 
+**品牌规范**：App 主视觉标语为「应无所住」；「强迫不强破」是母品牌标语（见 `miniprogram/assets/brand-lockup.jpg`），用于对外宣传物料，不出现在 App 界面内。Logo 为从品牌原图提取的打坐者符号（`assets/logo-white.png` / `logo-green.png`）。
+
 一款以内观（Vipassana）哲学为核心的微信小程序：不止是冥想 App，而是一位终身觉察伴侣。
 设计语言：极简 · MUJI · Apple HIG · 禅意 · 自然 · 慢生活。
 
