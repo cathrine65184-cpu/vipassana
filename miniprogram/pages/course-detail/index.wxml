@@ -2,6 +2,8 @@
 
   <!-- 封面 -->
   <view class="hero cover {{course.cover}}">
+    <image class="hero-img" src="{{course.img}}" mode="aspectFill" />
+    <view class="hero-shade"></view>
     <text class="hero-order display">{{course.order}}</text>
     <view class="hero-title display">{{course.title}}</view>
     <view class="hero-sub">{{course.subtitle}}</view>

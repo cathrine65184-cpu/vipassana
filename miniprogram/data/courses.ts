@@ -1,8 +1,10 @@
 /**
  * 课程数据（CMS-ready）
- * 内容来源：四份课程 PDF（百度云全课程 / 月度直播课程 / 1V1 咨询 / 3V1 团导咨询）。
+ * 内容来源：课程 PDF（百度云全课程 / 1V1 咨询 / 3V1 团导咨询）。
+ * 注：月度直播课程已按需求下架（2026-07），如需恢复可从 git 历史找回。
  * 后续可替换为云数据库 collection: courses。
  */
+import { img } from './images'
 
 export interface Chapter {
   id: string
@@ -19,7 +21,8 @@ export interface Course {
   title: string
   subtitle: string
   desc: string
-  cover: string          // 渐变封面 class，可替换为图片 URL
+  cover: string          // 渐变底色 class（图片加载失败时兜底）
+  img: string            // 封面照片 URL
   difficulty: string
   price: number
   priceUnit: string
@@ -40,6 +43,7 @@ export const courses: Course[] = [
     subtitle: '8 年走出强迫焦虑的经验，一次讲透',
     desc: '约 3 小时的系统录播课，从内观的起源与原理讲到日常练习方法，永久更新。适合自学能力强、希望先建立完整认知地图的小伙伴。',
     cover: 'g-moss',
+    img: img.forestRoad,
     difficulty: '入门',
     price: 399,
     priceUnit: '元',
@@ -60,36 +64,13 @@ export const courses: Course[] = [
     ]
   },
   {
-    id: 'live',
-    order: '02',
-    title: '月度直播课程',
-    subtitle: '每月 2 次直播 · 每次 2-3 小时',
-    desc: '团队 3 位核心导师参与：Drake 老师主讲，瑞老师、陈老师分享。把正念内观的困惑当场问、当场解，适合工作繁忙、需要持续节奏感的练习者。',
-    cover: 'g-dew',
-    difficulty: '进阶',
-    price: 399,
-    priceUnit: '元/期',
-    priceNote: '每月 2 次',
-    teachers: ['Drake（主讲）', '瑞老师（分享）', '陈老师（分享）'],
-    audience: ['轻中度强迫焦虑', '日常工作繁忙', '对正念内观有困惑的小伙伴'],
-    includes: ['每月 2 次直播', '每次 2-3 小时', '直播回放'],
-    highlights: ['压力与情绪', '日常正念', '习惯养成', '实时答疑'],
-    badge: '同修之光',
-    chapters: [
-      { id: 'l1', title: '本月直播 · 第一讲：压力下的觉知', type: 'video', duration: '2-3 小时', free: true },
-      { id: 'l2', title: '本月直播 · 第二讲：情绪的观察与接纳', type: 'video', duration: '2-3 小时' },
-      { id: 'l3', title: '课后梳理：日常正念清单', type: 'article', duration: '12 分钟' },
-      { id: 'l4', title: '习惯养成：21 天正念打卡计划', type: 'practice', duration: '21 天' },
-      { id: 'l5', title: '阶段测验：正念生活自评', type: 'quiz', duration: '10 分钟' }
-    ]
-  },
-  {
     id: 'one2one',
-    order: '03',
+    order: '02',
     title: '1V1 导师咨询',
     subtitle: 'Drake 导师单独指导 60 分钟',
     desc: '推荐首次沟通的小伙伴：建立第一次了解和思维评估，明确当下卡点与练习路径。像一次安静的对坐，只谈你自己。',
     cover: 'g-dawn',
+    img: img.sunLeaves,
     difficulty: '个性化',
     price: 500,
     priceUnit: '元/小时',
@@ -106,11 +87,12 @@ export const courses: Course[] = [
   },
   {
     id: 'group',
-    order: '04',
+    order: '03',
     title: '3V1 团队核心导师指导',
     subtitle: '三位导师全方位共同陪伴',
     desc: 'Drake 老师负责概念知识灌输，陈老师负责日常实战训练，瑞老师负责增强信念感。每周 1 次 90 分钟语音（至少 2 位导师），专属微信陪伴群，日常 12 小时 3 位导师实时文字答疑（康复重点）。2 个月学员额外赠送 720 小时"防复发"保护期。',
     cover: 'g-forest',
+    img: img.meditation,
     difficulty: '深度陪伴',
     price: 2699,
     priceUnit: '元/月',

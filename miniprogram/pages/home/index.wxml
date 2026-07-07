@@ -1,34 +1,89 @@
 <view class="home">
 
-  <!-- ================= Hero ================= -->
-  <view class="hero" style="padding-top:{{statusBar + 24}}px;">
-    <view class="hero-glow"></view>
-    <view class="hero-brand">VIPASSANA</view>
-    <image class="hero-logo" src="/assets/logo-white.png" mode="aspectFit" bindtap="goSilent" />
-    <view class="hero-slogan display">应无所住</view>
-    <view class="hero-en">it is what it is</view>
-    <view class="hero-sub">内观 · 觉知 · 正念 · 自由</view>
+  <!-- ================= Hero（设计稿同款：照片 + 暗色渐变） ================= -->
+  <view class="hero">
+    <image class="hero-photo" src="{{heroImg}}" mode="aspectFill" />
+    <view class="hero-shade"></view>
 
-    <!-- 每日一句（AI 功能 5） -->
-    <view class="hero-sentence">「 {{sentence}} 」</view>
+    <view class="hero-content" style="padding-top:{{statusBar + 16}}px;">
+      <!-- 左上品牌 -->
+      <view class="hero-brand">
+        <view class="hero-brand-name">VIPASSANA</view>
+        <view class="hero-brand-sub">内观 · 觉知 · 正念 · 自由</view>
+      </view>
+
+      <!-- 中央标识 -->
+      <view class="hero-center">
+        <image class="hero-logo" src="/assets/logo-white.png" mode="aspectFit" bindtap="goSilent" />
+        <view class="hero-slogan display">应无所住</view>
+        <view class="hero-en">it is what it is</view>
+      </view>
+
+      <!-- 四支柱速览（毛玻璃卡 + 圆形图标） -->
+      <view class="glass pillars-quick">
+        <view
+          wx:for="{{pillars}}"
+          wx:key="id"
+          class="quick"
+          data-id="{{item.id}}"
+          bindtap="scrollToPillar"
+        >
+          <view class="quick-ring">
+            <van-icon name="{{item.icon}}" size="40rpx" color="#F7F4EE" />
+          </view>
+          <text class="quick-label">{{item.title}}</text>
+        </view>
+      </view>
+
+      <!-- 禅语轮播（毛玻璃卡 + 三圆点） -->
+      <view class="glass quote-glass">
+        <view class="quote-mark display qm-l">“</view>
+        <swiper class="quote-swiper" autoplay interval="6000" circular bindchange="onQuoteSwipe">
+          <swiper-item wx:for="{{heroQuotes}}" wx:key="text">
+            <view class="quote-slide">
+              <view class="quote-text">{{item.text}}</view>
+            </view>
+          </swiper-item>
+        </swiper>
+        <view class="quote-mark display qm-r">”</view>
+        <view class="quote-dots">
+          <view wx:for="{{heroQuotes}}" wx:key="text" class="qdot {{quoteIndex === index ? 'on' : ''}}"></view>
+        </view>
+      </view>
+    </view>
   </view>
 
   <!-- ================= 内容区 ================= -->
   <view class="body">
 
-    <!-- 骨架屏 -->
     <block wx:if="{{loading}}">
-      <view class="skeleton sk-lg"></view>
       <view class="skeleton sk-md"></view>
+      <view class="skeleton sk-lg"></view>
       <view class="skeleton sk-md"></view>
     </block>
 
     <block wx:else>
-      <!-- 四大支柱 -->
+      <!-- 今日冥想 -->
+      <section-title title="今日冥想" sub="Today's Meditation" more="全部" bind:more="goMeditationTab" />
+      <view class="card continue-card fade-item" bindtap="goContinue">
+        <view class="continue-cover cover {{continueItem.cover}}">
+          <image class="cover-img" src="{{continueItem.img}}" mode="aspectFill" />
+          <van-icon name="play-circle-o" color="#F7F4EE" size="64rpx" class="cover-play" />
+        </view>
+        <view class="continue-info">
+          <view class="t-title">{{continueItem.title}}</view>
+          <view class="t-hint">{{continueItem.minutes}} 分钟 · {{continueItem.category}}</view>
+          <view class="continue-btn">继续聆听</view>
+        </view>
+      </view>
+
+      <!-- 四大支柱详情卡 -->
+      <section-title title="四大支柱" sub="The Four Pillars" />
       <view class="pillars">
         <view
           wx:for="{{pillars}}"
           wx:key="id"
+          id="pillar-{{item.id}}"
           class="pillar card fade-item"
         >
           <view class="pillar-head">
@@ -54,27 +109,6 @@
               <van-icon name="arrow" size="20rpx" />
             </view>
           </view>
-        </view>
-      </view>
-
-      <!-- 今日禅语 -->
-      <section-title title="今日禅语" sub="Daily Zen" />
-      <view class="card quote-card fade-item">
-        <view class="quote-mark display">"</view>
-        <view class="quote-text display">{{quote.text}}</view>
-        <view class="quote-author">—— {{quote.author}}</view>
-      </view>
-
-      <!-- 今日冥想 -->
-      <section-title title="今日冥想" sub="Today's Meditation" more="全部" url="" bind:more="goMeditationTab" />
-      <view class="card continue-card fade-item" bindtap="goContinue">
-        <view class="continue-cover cover {{continueItem.cover}}">
-          <van-icon name="play-circle-o" color="#F7F4EE" size="64rpx" />
-        </view>
-        <view class="continue-info">
-          <view class="t-title">{{continueItem.title}}</view>
-          <view class="t-hint">{{continueItem.minutes}} 分钟 · {{continueItem.category}}</view>
-          <view class="continue-btn">继续聆听</view>
         </view>
       </view>
 

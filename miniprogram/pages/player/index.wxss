@@ -14,17 +14,30 @@ page {
 /* 封面 */
 .stage { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .disc {
+  position: relative;
   width: 420rpx;
   height: 420rpx;
   border-radius: 50%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 24rpx 80rpx rgba(0, 0, 0, 0.35), inset 0 0 0 16rpx rgba(247, 244, 238, 0.06);
 }
+.disc-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.disc-shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 21, 17, 0.42);
+}
 .disc.spin { animation: spin 24s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.disc-logo { width: 200rpx; height: 200rpx; opacity: 0.9; }
+.disc-logo { position: relative; width: 200rpx; height: 200rpx; opacity: 0.9; }
 
 .med-title { color: #F7F4EE; font-size: 44rpx; margin-top: 48rpx; }
 .med-sub { color: rgba(247, 244, 238, 0.6); font-size: 25rpx; margin-top: 10rpx; }

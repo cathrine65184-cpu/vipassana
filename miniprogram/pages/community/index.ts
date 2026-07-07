@@ -12,8 +12,7 @@ Page({
     keyword: '',
     tag: '',
     hotTags,
-    left: [] as any[],   // 瀑布流左列
-    right: [] as any[]   // 瀑布流右列
+    list: [] as any[]   // 单列图文流（设计稿样式）
   },
 
   onLoad() {
@@ -32,12 +31,12 @@ Page({
     setTimeout(() => wx.stopPullDownRefresh(), 500)
   },
 
-  /** 合并种子帖与用户发布的帖子，按当前筛选条件分列 */
+  /** 合并种子帖与用户发布的帖子，按当前筛选条件过滤排序 */
   refresh() {
     const s = getState()
     const mine = s.myPosts.map(p => ({
       id: p.id, author: s.nickname, avatarBg: 'g-gold', time: p.time,
-      title: p.title, excerpt: p.content.slice(0, 40), cover: p.cover,
+      title: p.title, excerpt: p.content.slice(0, 40), cover: p.cover, img: '',
       tags: p.tags, likes: 0, comments: [], mine: true
     }))
     let list: any[] = mine.concat(seedPosts as any[])
@@ -53,11 +52,7 @@ Page({
       list = list.filter(p => p.title.indexOf(k) >= 0 || p.excerpt.indexOf(k) >= 0 || p.author.indexOf(k) >= 0)
     }
 
-    // 瀑布流：交替分配左右列
-    const left: any[] = []
-    const right: any[] = []
-    list.forEach((p, i) => (i % 2 === 0 ? left : right).push(p))
-    this.setData({ left, right })
+    this.setData({ list })
   },
 
   onSearch(e: any) {

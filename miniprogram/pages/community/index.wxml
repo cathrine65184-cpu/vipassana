@@ -16,6 +16,17 @@
     />
   </view>
 
+  <!-- 排序 Tab（设计稿：推荐 / 最新 / 精华 / 我的圈子） -->
+  <view class="sort">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="*this"
+      class="sort-item {{tab === index ? 'on' : ''}}"
+      data-index="{{index}}"
+      bindtap="switchTab"
+    >{{item}}</view>
+  </view>
+
   <!-- 话题标签 -->
   <scroll-view scroll-x class="tags" enhanced show-scrollbar="{{false}}">
     <view
@@ -27,57 +38,47 @@
     >{{item}}</view>
   </scroll-view>
 
-  <!-- 排序 Tab -->
-  <view class="sort">
-    <view
-      wx:for="{{tabs}}"
-      wx:key="*this"
-      class="sort-item {{tab === index ? 'on' : ''}}"
-      data-index="{{index}}"
-      bindtap="switchTab"
-    >{{item}}</view>
-  </view>
-
   <!-- 骨架屏 -->
   <block wx:if="{{loading}}">
-    <view class="falls">
-      <view class="fall-col"><view class="skeleton sk-post"></view><view class="skeleton sk-post short"></view></view>
-      <view class="fall-col"><view class="skeleton sk-post short"></view><view class="skeleton sk-post"></view></view>
-    </view>
+    <view class="skeleton sk-post" wx:for="{{[1,2,3]}}" wx:key="*this"></view>
   </block>
 
-  <!-- 瀑布流 -->
+  <!-- 单列图文流（设计稿同款：左侧文字 + 右侧方形照片） -->
   <block wx:else>
-    <view class="falls" wx:if="{{left.length || right.length}}">
-      <view class="fall-col">
-        <view wx:for="{{left}}" wx:key="id" class="card post fade-item" data-id="{{item.id}}" data-mine="{{item.mine}}" bindtap="goDetail">
-          <view wx:if="{{item.cover}}" class="post-cover cover {{item.cover}}"></view>
-          <view class="post-title">{{item.title}}</view>
-          <view class="post-excerpt">{{item.excerpt}}</view>
-          <view class="post-meta">
-            <view class="post-author">
-              <view class="post-avatar {{item.avatarBg}}"></view>
-              <text>{{item.author}}</text>
-            </view>
-            <view class="post-like"><van-icon name="like-o" size="24rpx" />{{item.likes}}</view>
+    <block wx:if="{{list.length}}">
+      <view
+        wx:for="{{list}}"
+        wx:key="id"
+        class="card post fade-item"
+        data-id="{{item.id}}"
+        data-mine="{{item.mine}}"
+        bindtap="goDetail"
+      >
+        <view class="post-top">
+          <view class="post-avatar {{item.avatarBg}}"></view>
+          <view class="post-who">
+            <view class="post-author">{{item.author}}</view>
+            <view class="t-hint">{{item.time}}</view>
+          </view>
+          <van-icon name="ellipsis" size="34rpx" color="rgba(32,50,40,0.3)" />
+        </view>
+
+        <view class="post-main">
+          <view class="post-text">
+            <view class="post-title">{{item.title}}</view>
+            <view class="post-excerpt">{{item.excerpt}}</view>
+          </view>
+          <view wx:if="{{item.cover}}" class="post-thumb cover {{item.cover}}">
+            <image wx:if="{{item.img}}" class="cover-img" src="{{item.img}}" mode="aspectFill" />
           </view>
         </view>
-      </view>
-      <view class="fall-col">
-        <view wx:for="{{right}}" wx:key="id" class="card post fade-item" data-id="{{item.id}}" data-mine="{{item.mine}}" bindtap="goDetail">
-          <view wx:if="{{item.cover}}" class="post-cover cover {{item.cover}}"></view>
-          <view class="post-title">{{item.title}}</view>
-          <view class="post-excerpt">{{item.excerpt}}</view>
-          <view class="post-meta">
-            <view class="post-author">
-              <view class="post-avatar {{item.avatarBg}}"></view>
-              <text>{{item.author}}</text>
-            </view>
-            <view class="post-like"><van-icon name="like-o" size="24rpx" />{{item.likes}}</view>
-          </view>
+
+        <view class="post-meta">
+          <view class="post-act"><van-icon name="like-o" size="30rpx" />{{item.likes}}</view>
+          <view class="post-act"><van-icon name="chat-o" size="30rpx" />{{item.comments.length}}</view>
         </view>
       </view>
-    </view>
+    </block>
 
     <empty-state wx:else title="这里还很安静" desc="没有找到相关内容，换个关键词试试" />
   </block>

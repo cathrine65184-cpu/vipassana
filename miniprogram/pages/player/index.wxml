@@ -3,6 +3,8 @@
   <!-- 封面 -->
   <view class="stage">
     <view class="disc cover {{med.cover}} {{playing ? 'spin' : ''}}">
+      <image class="disc-img" src="{{med.img}}" mode="aspectFill" />
+      <view class="disc-shade"></view>
       <image class="disc-logo" src="/assets/logo-white.png" mode="aspectFit" />
     </view>
     <view class="med-title display">{{med.title}}</view>

@@ -1,7 +1,7 @@
 <view class="page">
   <view class="head">
     <view class="head-title display">付费课程</view>
-    <view class="t-sub">系统学习内观与正念 · 四条学习路径</view>
+    <view class="t-sub">系统学习内观与正念</view>
   </view>
 
   <!-- 骨架屏 -->
@@ -10,6 +10,7 @@
   </block>
 
   <block wx:else>
+    <!-- 设计稿同款：左侧方形照片 + 右侧编号/标题/简介/价格/锁 -->
     <view
       wx:for="{{list}}"
       wx:key="id"
@@ -18,32 +19,26 @@
       bindtap="goDetail"
     >
       <view class="course-cover cover {{item.cover}}">
-        <text class="course-order display">{{item.order}}</text>
-        <view class="course-diff">{{item.difficulty}}</view>
+        <image class="cover-img" src="{{item.img}}" mode="aspectFill" />
       </view>
       <view class="course-body">
-        <view class="course-title t-title">{{item.title}}</view>
+        <view class="course-order">{{item.order}}</view>
+        <view class="course-title">{{item.title}}</view>
         <view class="course-sub">{{item.subtitle}}</view>
 
-        <view class="course-tags">
-          <text wx:for="{{item.highlights}}" wx:for-item="h" wx:key="*this" class="course-tag">{{h}}</text>
-        </view>
-
-        <!-- 进度条：已解锁课程显示学习进度 -->
+        <!-- 已解锁课程显示学习进度 -->
         <view wx:if="{{item.unlocked && item.progress > 0}}" class="course-progress">
           <view class="course-progress-bar"><view class="course-progress-in" style="width:{{item.progress}}%"></view></view>
           <text class="t-hint">{{item.progress}}%</text>
         </view>
 
         <view class="course-foot">
-          <view class="course-price">
-            <text class="course-price-num">¥{{item.price}}</text>
-            <text class="course-price-unit">{{item.priceUnit}}</text>
-          </view>
-          <view class="course-lock {{item.unlocked ? 'open' : ''}}">
-            <van-icon name="{{item.unlocked ? 'success' : 'lock'}}" size="28rpx" />
-            <text>{{item.unlocked ? '已解锁' : '待解锁'}}</text>
-          </view>
+          <view class="course-price">¥{{item.price}}<text class="course-price-unit">{{item.priceUnit === '元' ? '' : item.priceUnit.slice(1)}}</text></view>
+          <van-icon
+            name="{{item.unlocked ? 'success' : 'lock'}}"
+            size="32rpx"
+            color="{{item.unlocked ? '#B99A5B' : 'rgba(32,50,40,0.35)'}}"
+          />
         </view>
       </view>
     </view>

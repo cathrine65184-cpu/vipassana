@@ -1,43 +1,60 @@
 .home { min-height: 100vh; background: var(--beige); }
 
-/* ---------------- Hero ---------------- */
+/* ---------------- Hero：照片 + 暗色渐变（设计稿同款） ---------------- */
 .hero {
   position: relative;
+  overflow: hidden;
+  border-radius: 0 0 48rpx 48rpx;
+  /* 照片加载失败时的兜底底色 */
+  background: linear-gradient(160deg, #24382C 0%, #203228 45%, #131F18 100%);
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(120% 90% at 20% 0%, #2C4436 0%, transparent 60%),
-    radial-gradient(120% 100% at 90% 20%, #16241C 0%, transparent 70%),
-    linear-gradient(160deg, #24382C 0%, #203228 45%, #131F18 100%);
-  padding: 0 48rpx 120rpx;
+    linear-gradient(180deg, rgba(14, 21, 17, 0.55) 0%, rgba(14, 21, 17, 0.15) 30%, rgba(14, 21, 17, 0.35) 62%, rgba(14, 21, 17, 0.82) 100%);
+}
+
+.hero-content {
+  position: relative;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  padding-bottom: 48rpx;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-radius: 0 0 48rpx 48rpx;
-  overflow: hidden;
 }
 
-.hero-glow {
-  position: absolute;
-  top: -160rpx;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 560rpx;
-  height: 560rpx;
-  background: radial-gradient(circle, rgba(185, 154, 91, 0.22) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-brand {
-  align-self: flex-start;
-  color: rgba(247, 244, 238, 0.85);
-  font-size: 30rpx;
+.hero-brand-name {
+  color: rgba(247, 244, 238, 0.92);
+  font-size: 34rpx;
   letter-spacing: 8rpx;
   font-weight: 600;
 }
+.hero-brand-sub {
+  color: rgba(247, 244, 238, 0.62);
+  font-size: 24rpx;
+  letter-spacing: 4rpx;
+  margin-top: 6rpx;
+}
+
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 36rpx;
+}
 
 .hero-logo {
-  width: 240rpx;
-  height: 240rpx;
-  margin-top: 48rpx;
+  width: 260rpx;
+  height: 260rpx;
   animation: breathe 6s ease-in-out infinite;
 }
 
@@ -48,40 +65,140 @@
 
 .hero-slogan {
   color: #F7F4EE;
-  font-size: 72rpx;
-  margin-top: 24rpx;
-  letter-spacing: 12rpx;
+  font-size: 76rpx;
+  margin-top: 16rpx;
+  letter-spacing: 14rpx;
+  text-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.4);
 }
 
 .hero-en {
-  color: rgba(247, 244, 238, 0.6);
-  font-size: 26rpx;
+  color: rgba(247, 244, 238, 0.75);
+  font-size: 28rpx;
   font-style: italic;
+  margin-top: 10rpx;
+}
+
+/* 毛玻璃卡（速览 / 禅语共用） */
+.glass {
+  margin-top: 40rpx;
+  background: rgba(18, 26, 21, 0.52);
+  backdrop-filter: blur(16px);
+  border: 2rpx solid rgba(247, 244, 238, 0.08);
+  border-radius: 36rpx;
+  box-shadow: 0 16rpx 48rpx rgba(0, 0, 0, 0.25);
+}
+
+/* 四支柱速览：圆形描边图标 */
+.pillars-quick {
+  display: flex;
+  justify-content: space-around;
+  padding: 36rpx 24rpx;
+}
+.quick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  transition: transform 0.15s ease;
+}
+.quick:active { transform: scale(0.94); }
+.quick-ring {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgba(247, 244, 238, 0.45);
+  background: rgba(247, 244, 238, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.quick-label {
+  color: rgba(247, 244, 238, 0.9);
+  font-size: 26rpx;
+  letter-spacing: 2rpx;
+}
+
+/* 禅语轮播 */
+.quote-glass { position: relative; padding: 44rpx 48rpx 40rpx; }
+.quote-mark {
+  position: absolute;
+  font-size: 72rpx;
+  color: rgba(247, 244, 238, 0.4);
+  line-height: 1;
+}
+.qm-l { top: 24rpx; left: 32rpx; }
+.qm-r { bottom: 48rpx; right: 32rpx; }
+
+.quote-swiper { height: 200rpx; }
+.quote-slide {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.quote-text {
+  color: rgba(247, 244, 238, 0.92);
+  font-size: 28rpx;
+  line-height: 2;
+  text-align: center;
+  padding: 0 20rpx;
+}
+
+.quote-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12rpx;
   margin-top: 8rpx;
 }
-
-.hero-sub {
-  color: rgba(247, 244, 238, 0.78);
-  font-size: 28rpx;
-  letter-spacing: 6rpx;
-  margin-top: 20rpx;
+.qdot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: rgba(247, 244, 238, 0.3);
+  transition: all 0.3s ease;
 }
-
-.hero-sentence {
-  margin-top: 44rpx;
-  color: rgba(247, 244, 238, 0.66);
-  font-size: 25rpx;
-  text-align: center;
-  line-height: 1.8;
-}
+.qdot.on { background: rgba(247, 244, 238, 0.9); width: 28rpx; border-radius: 999rpx; }
 
 /* ---------------- Body ---------------- */
-.body { padding: 32rpx 32rpx 220rpx; margin-top: -60rpx; }
+.body { padding: 8rpx 32rpx 220rpx; }
 
 .sk-lg { height: 320rpx; margin-bottom: 24rpx; border-radius: var(--radius); }
-.sk-md { height: 200rpx; margin-bottom: 24rpx; border-radius: var(--radius); }
+.sk-md { height: 200rpx; margin: 40rpx 0 24rpx; border-radius: var(--radius); }
 
-/* 四大支柱 */
+/* 封面照片通用（渐变兜底在下，照片在上） */
+.cover { position: relative; }
+.cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.cover-play { position: relative; z-index: 1; }
+
+/* 今日冥想 */
+.continue-card { display: flex; gap: 28rpx; align-items: center; }
+.continue-cover {
+  width: 200rpx;
+  height: 200rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+.continue-info { flex: 1; display: flex; flex-direction: column; gap: 10rpx; }
+.continue-btn {
+  align-self: flex-start;
+  margin-top: 10rpx;
+  background: var(--forest);
+  color: #F7F4EE;
+  font-size: 25rpx;
+  padding: 12rpx 36rpx;
+  border-radius: 999rpx;
+}
+
+/* 四大支柱详情卡 */
 .pillars { display: flex; flex-direction: column; gap: 24rpx; }
 
 .pillar-head { display: flex; align-items: center; gap: 20rpx; }
@@ -117,49 +234,6 @@
   transition: transform 0.15s ease;
 }
 .pillar-link:active { transform: scale(0.97); }
-
-/* 禅语卡 */
-.quote-card { position: relative; padding: 48rpx 40rpx; overflow: hidden; }
-.quote-mark {
-  position: absolute;
-  top: -20rpx;
-  left: 28rpx;
-  font-size: 140rpx;
-  color: var(--gold-soft);
-}
-.quote-text {
-  position: relative;
-  font-size: 32rpx;
-  line-height: 2;
-  text-align: center;
-}
-.quote-author {
-  margin-top: 24rpx;
-  text-align: right;
-  font-size: 24rpx;
-  color: var(--gold);
-}
-
-/* 今日冥想 */
-.continue-card { display: flex; gap: 28rpx; align-items: center; }
-.continue-cover {
-  width: 200rpx;
-  height: 200rpx;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.continue-info { flex: 1; display: flex; flex-direction: column; gap: 10rpx; }
-.continue-btn {
-  align-self: flex-start;
-  margin-top: 10rpx;
-  background: var(--forest);
-  color: #F7F4EE;
-  font-size: 25rpx;
-  padding: 12rpx 36rpx;
-  border-radius: 999rpx;
-}
 
 /* 打卡 */
 .checkin-top { display: flex; align-items: center; gap: 40rpx; }

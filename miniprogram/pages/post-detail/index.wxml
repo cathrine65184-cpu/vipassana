@@ -17,7 +17,9 @@
   <!-- 正文 -->
   <view class="card">
     <view class="post-title display">{{post.title}}</view>
-    <view wx:if="{{post.cover}}" class="post-cover cover {{post.cover}}"></view>
+    <view wx:if="{{post.cover}}" class="post-cover cover {{post.cover}}">
+      <image wx:if="{{post.img}}" class="cover-img" src="{{post.img}}" mode="aspectFill" />
+    </view>
     <view wx:for="{{post.content}}" wx:key="*this" class="para">{{item}}</view>
     <view class="tags">
       <text wx:for="{{post.tags}}" wx:key="*this" class="tag">{{item}}</text>

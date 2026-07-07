@@ -6,7 +6,20 @@
   position: relative;
   color: #F7F4EE;
   margin-bottom: 24rpx;
+  overflow: hidden;
 }
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 21, 17, 0.25) 0%, rgba(14, 21, 17, 0.72) 100%);
+}
+.hero-order, .hero-title, .hero-sub, .hero-diff { position: relative; }
 .hero-order { font-size: 40rpx; opacity: 0.7; }
 .hero-title { font-size: 46rpx; margin-top: 12rpx; }
 .hero-sub { margin-top: 12rpx; font-size: 26rpx; opacity: 0.8; }

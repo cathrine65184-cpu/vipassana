@@ -12,55 +12,79 @@
 }
 .search-input { flex: 1; font-size: 27rpx; }
 
-.tags { white-space: nowrap; margin-top: 28rpx; }
-.tags .chip { display: inline-flex; }
-
 .sort {
   display: flex;
   gap: 36rpx;
-  margin: 12rpx 8rpx 28rpx;
+  margin: 32rpx 8rpx 8rpx;
 }
 .sort-item {
   font-size: 27rpx;
   color: var(--ink-3);
-  padding-bottom: 8rpx;
-  border-bottom: 4rpx solid transparent;
+  padding: 8rpx 24rpx;
+  border-radius: 999rpx;
   transition: all 0.2s ease;
 }
 .sort-item.on {
-  color: var(--ink);
+  color: var(--forest);
   font-weight: 600;
-  border-bottom-color: var(--gold);
+  background: var(--gold-soft);
 }
 
-.falls { display: flex; gap: 20rpx; }
-.fall-col { flex: 1; display: flex; flex-direction: column; gap: 20rpx; min-width: 0; }
+.tags { white-space: nowrap; margin: 16rpx 0 8rpx; }
+.tags .chip { display: inline-flex; }
 
-.sk-post { height: 360rpx; }
-.sk-post.short { height: 240rpx; }
+.sk-post { height: 300rpx; margin-top: 20rpx; border-radius: var(--radius); }
 
-.post { padding: 24rpx; }
-.post-cover { height: 200rpx; margin-bottom: 20rpx; }
-.post-title { font-size: 28rpx; font-weight: 600; line-height: 1.5; }
+/* 设计稿同款帖子卡：作者行 + 左文右图 + 互动行 */
+.post { margin-top: 20rpx; padding: 28rpx; }
+
+.post-top { display: flex; align-items: center; gap: 16rpx; }
+.post-avatar { width: 64rpx; height: 64rpx; border-radius: 50%; flex-shrink: 0; }
+.g-gold { background: linear-gradient(135deg, #D9C39A, #B99A5B); }
+.post-who { flex: 1; }
+.post-author { font-size: 27rpx; font-weight: 600; }
+
+.post-main { display: flex; gap: 24rpx; margin-top: 20rpx; }
+.post-text { flex: 1; min-width: 0; }
+.post-title { font-size: 30rpx; font-weight: 600; line-height: 1.5; }
 .post-excerpt {
   margin-top: 10rpx;
-  font-size: 24rpx;
+  font-size: 25rpx;
   color: var(--ink-2);
+  line-height: 1.8;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+.cover { position: relative; }
+.cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.post-thumb {
+  width: 176rpx;
+  height: 176rpx;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
 .post-meta {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20rpx;
+  gap: 40rpx;
+  margin-top: 22rpx;
 }
-.post-author { display: flex; align-items: center; gap: 10rpx; font-size: 22rpx; color: var(--ink-3); }
-.post-avatar { width: 40rpx; height: 40rpx; border-radius: 50%; }
-.g-gold { background: linear-gradient(135deg, #D9C39A, #B99A5B); }
-.post-like { display: flex; align-items: center; gap: 6rpx; font-size: 22rpx; color: var(--ink-3); }
+.post-act {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 24rpx;
+  color: var(--ink-3);
+}
 
 .fab {
   position: fixed;

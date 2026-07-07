@@ -1,6 +1,7 @@
 /**
  * 社区帖子种子数据（CMS-ready，可替换为云数据库 collection: posts）
  */
+import { img } from './images'
 
 export interface Comment {
   id: string
@@ -18,6 +19,7 @@ export interface Post {
   excerpt: string
   content: string[]
   cover?: string
+  img?: string
   tags: string[]
   likes: number
   comments: Comment[]
@@ -41,6 +43,7 @@ export const posts: Post[] = [
       '今天坐了 20 分钟，腿麻了三次，心跑了无数次。但每一次拉回来，都算数。'
     ],
     cover: 'g-forest',
+    img: img.treesUp,
     tags: ['#觉察', '#晨间冥想'],
     likes: 23,
     essence: true,
@@ -62,6 +65,7 @@ export const posts: Post[] = [
       '正念不在坐垫上，在生活里。'
     ],
     cover: 'g-dawn',
+    img: img.tea,
     tags: ['#正念', '#冥想日记'],
     likes: 18,
     comments: [
@@ -81,6 +85,7 @@ export const posts: Post[] = [
       '这两年的练习教会我：不确定也可以活，而且活得挺好。'
     ],
     cover: 'g-mist',
+    img: img.foggyHills,
     tags: ['#内观', '#今日反思'],
     likes: 31,
     essence: true,
@@ -103,6 +108,7 @@ export const posts: Post[] = [
       '第七天下午的一坐，眼泪毫无理由地流下来。不是难过，像是某种很旧的东西被放掉了。'
     ],
     cover: 'g-moss',
+    img: img.forestRoad,
     tags: ['#禅修营', '#内观'],
     likes: 47,
     essence: true,
