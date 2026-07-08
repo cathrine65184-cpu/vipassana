@@ -1,0 +1,12 @@
+{
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。此处刻意固定小程序根目录，避免开发者工具在项目根目录查找 app.json 而启动失败。",
+  "projectname": "vipassana",
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "compileType": "miniprogram",
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": false
+  },
+  "condition": {}
+}

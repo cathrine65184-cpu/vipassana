@@ -2,8 +2,8 @@
 node_modules/
 miniprogram/node_modules/
 
-# devtools private config (contains local settings, safe to regenerate)
-project.private.config.json
+# NOTE: project.private.config.json is intentionally committed so the project
+# opens and runs on a fresh download without DevTools mis-resolving the root.
 
 # system
 .DS_Store
