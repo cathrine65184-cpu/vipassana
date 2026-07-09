@@ -14,9 +14,9 @@ const pillars = [
     desc: '看见事物的本来面目',
     items: [
       { label: '什么是内观', url: '/pages/course-detail/index?id=foundation' },
-      { label: '历史与源流', url: '/pages/course-detail/index?id=foundation' },
-      { label: '练习的益处', url: '/pages/course-detail/index?id=foundation' },
-      { label: '新手指南', url: '/pages/course-detail/index?id=foundation' }
+      { label: '历史与源流', url: '/pages/article/index?id=history' },
+      { label: '练习的益处', url: '/pages/article/index?id=benefits' },
+      { label: '新手指南', url: '/pages/course-detail/index?id=guide' }
     ]
   },
   {

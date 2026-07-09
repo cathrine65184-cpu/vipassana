@@ -53,14 +53,20 @@ export const courses: Course[] = [
     includes: ['约 3 小时高清录播', '课程讲义', '永久回看与更新'],
     highlights: ['起源与原理', '身体觉知', '呼吸练习', '基础打坐'],
     badge: '内观初心',
+    // 真实章节目录（2026-07 内容稿）：约 3 小时高清录播，共 12 讲
     chapters: [
-      { id: 'f1', title: '内观是什么：起源、原理与误区', type: 'video', duration: '32 分钟', free: true },
-      { id: 'f2', title: '急性期的自处：先安顿，再觉察', type: 'video', duration: '28 分钟' },
-      { id: 'f3', title: '身体觉知：从头到脚的扫描练习', type: 'audio', duration: '24 分钟' },
-      { id: 'f4', title: '呼吸练习：观息法入门', type: 'audio', duration: '18 分钟' },
-      { id: 'f5', title: '基础打坐姿势与时长安排', type: 'article', duration: '10 分钟' },
-      { id: 'f6', title: '阶段测验：检验你的认知地图', type: 'quiz', duration: '15 分钟' },
-      { id: 'f7', title: '实修作业：连续 7 天晨间观息', type: 'practice', duration: '7 天' }
+      { id: 'f1', title: '你一定可以走出来', type: 'video', duration: '约 6 分钟', free: true },
+      { id: 'f2', title: '强迫症的本质是什么', type: 'video', duration: '约 7 分钟' },
+      { id: 'f3', title: '强迫症的根源疗愈之道', type: 'video', duration: '约 8 分钟' },
+      { id: 'f4', title: '何为安那般那念', type: 'video', duration: '约 5 分钟' },
+      { id: 'f5', title: '平等心的重要性', type: 'video', duration: '约 3 分钟' },
+      { id: 'f6', title: '带你做内观', type: 'video', duration: '约 20 分钟' },
+      { id: 'f7', title: '就是如此', type: 'video', duration: '约 9 分钟' },
+      { id: 'f8', title: '就是如此融入生活深化练习', type: 'video', duration: '约 10 分钟' },
+      { id: 'f9', title: '什么才是好的状态', type: 'video', duration: '约 6 分钟' },
+      { id: 'f10', title: '陈老师实战康复经验分享（上）', type: 'video', duration: '约 20 分钟' },
+      { id: 'f11', title: '陈老师实战康复经验分享（中）', type: 'video', duration: '约 30 分钟' },
+      { id: 'f12', title: '陈老师实战康复经验分享（下）', type: 'video', duration: '约 30 分钟' }
     ]
   },
   {
@@ -110,6 +116,29 @@ export const courses: Course[] = [
       { id: 'g5', title: '康复手册：15000 字系统阅读', type: 'article', duration: '90 分钟' },
       { id: 'g6', title: '阶段测验：洞见与整合', type: 'quiz', duration: '20 分钟' },
       { id: 'g7', title: '防复发：720 小时保护期实修', type: 'practice', duration: '30 天' }
+    ]
+  },
+  {
+    id: 'guide',
+    order: '04',
+    title: '新手指南 · 康复手册',
+    subtitle: '强迫症正念终极康复指南（约 15000 字）',
+    desc: '一份系统整合内观与正念的康复路径手册，约 15000 字深度长文。解锁后进入内部讨论群，由老师带领指导阅读与实践，不让你一个人摸索。',
+    cover: 'g-mist',
+    img: img.sunbeam,
+    difficulty: '入门',
+    price: 88.88,
+    priceUnit: '元',
+    priceNote: '含内部讨论群指导',
+    teachers: ['导师团队'],
+    audience: ['刚接触内观正念的新手', '想系统了解康复路径', '希望有社群陪伴与指导'],
+    includes: ['约 15000 字康复手册', '进入内部讨论群', '老师带领指导'],
+    highlights: ['新手入门', '康复地图', '社群陪伴', '深度阅读'],
+    badge: '初心手册',
+    chapters: [
+      { id: 'gd1', title: '手册导读：如何使用这份指南', type: 'article', duration: '10 分钟', free: true },
+      { id: 'gd2', title: '康复手册 · 全文阅读（约 15000 字）', type: 'article', duration: '约 90 分钟' },
+      { id: 'gd3', title: '加入内部讨论群，跟随老师实践', type: 'practice', duration: '长期' }
     ]
   }
 ]

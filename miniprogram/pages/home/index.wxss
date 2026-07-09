@@ -37,9 +37,9 @@
 
 .hero-brand-name {
   color: rgba(250, 248, 242, 0.9);
-  font-size: 34rpx;
-  letter-spacing: 8rpx;
-  font-weight: 600;
+  font-size: 31rpx;
+  letter-spacing: 3rpx;
+  font-weight: 300;
 }
 .hero-brand-sub {
   color: rgba(250, 248, 242, 0.6);

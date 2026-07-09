@@ -1,0 +1,31 @@
+<view class="page" wx:if="{{article}}">
+  <view class="a-head cover {{article.cover}}">
+    <view class="a-title display">{{article.title}}</view>
+    <view class="a-sub">{{article.subtitle}}</view>
+  </view>
+
+  <view class="card a-body">
+    <block wx:for="{{article.blocks}}" wx:key="index">
+      <!-- 小节标题 -->
+      <view wx:if="{{item.type === 'h'}}" class="b-h">
+        <view class="b-h-bar"></view>
+        <text>{{item.text}}</text>
+      </view>
+
+      <!-- 段落 -->
+      <view wx:elif="{{item.type === 'p'}}" class="b-p">{{item.text}}</view>
+
+      <!-- 要点 -->
+      <view wx:elif="{{item.type === 'li'}}" class="b-li">
+        <view class="b-li-dot"></view>
+        <view class="b-li-text"><text class="b-li-term">{{item.term}}：</text>{{item.text}}</view>
+      </view>
+
+      <!-- 提示卡 -->
+      <view wx:elif="{{item.type === 'tip'}}" class="b-tip">
+        <van-icon name="flower-o" size="30rpx" color="#A68F55" />
+        <text>{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+</view>

@@ -6,6 +6,7 @@
     "pages/meditation/index",
     "pages/profile/index",
     "pages/course-detail/index",
+    "pages/article/index",
     "pages/player/index",
     "pages/post-detail/index",
     "pages/post-create/index",

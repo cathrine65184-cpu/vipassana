@@ -84,7 +84,11 @@ export function reflect(text: string): ReflectionResult {
   return { emotions: found, summary: parts.join(' ') }
 }
 
-/* ---------- 功能 2：AI 正念教练（只提问，不建议） ---------- */
+/* ---------- 功能 2：AI 正念教练（只提问，不建议） ----------
+ * 规划（2026-07）：后期将导师知识库（课程逐字稿、康复手册、答疑记录）
+ * 喂入大模型做 RAG，生成"独属于我们自己"的陪伴模型；
+ * 届时本模块替换为云函数 ai（action: 'coach'）调用，前端零改动。
+ */
 
 const coachOpeners = [
   '我在。想聊聊此刻的你吗？',
