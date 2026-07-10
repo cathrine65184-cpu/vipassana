@@ -58,13 +58,50 @@ Page({
     setState({ lastPlayed: med.id })
     wx.setKeepScreenOn({ keepScreenOn: true })
 
-    // 有真实音频时使用 InnerAudioContext
+    // 有真实音频时使用 InnerAudioContext。
+    // audio 字段支持三种来源：包内路径（/assets/audio/...）、https 链接、云存储 fileID（cloud://...）
     if (med.audio) {
-      this.audio = wx.createInnerAudioContext()
-      this.audio.src = med.audio
-      this.audio.onTimeUpdate(() => this.syncFromAudio())
-      this.audio.onEnded(() => this.onComplete())
+      if (med.audio.indexOf('cloud://') === 0 && wx.cloud) {
+        wx.cloud.getTempFileURL({ fileList: [med.audio] })
+          .then((res: any) => {
+            const url = res.fileList && res.fileList[0] && res.fileList[0].tempFileURL
+            if (url) this.initAudio(url)
+          })
+          .catch(() => {
+            wx.showToast({ title: '音频加载失败，转为计时模式', icon: 'none' })
+          })
+      } else {
+        this.initAudio(med.audio)
+      }
     }
+  },
+
+  /** 创建真实音频播放器 */
+  initAudio(src: string) {
+    this.audio = wx.createInnerAudioContext()
+    this.audio.src = src
+    this.audio.onTimeUpdate(() => this.syncFromAudio())
+    this.audio.onEnded(() => this.onComplete())
+    this.audio.onError(() => {
+      // 音频源异常时降级为计时模拟，不阻塞练习
+      if (this.audio) { this.audio.destroy(); this.audio = null }
+      wx.showToast({ title: '音频加载失败，转为计时模式', icon: 'none' })
+    })
+    // 若加载到的真实时长与配置不一致，以真实时长为准
+    this.audio.onCanplay(() => {
+      const d = Math.round(this.audio && this.audio.duration)
+      if (d && d > 0 && Math.abs(d - this.data.total) > 5) {
+        this.setData({ total: d, totalText: this.fmtSec(d) })
+      }
+    })
+    // 恢复上次进度
+    if (this.data.current > 0) this.audio.seek(this.data.current)
+  },
+
+  fmtSec(sec: number): string {
+    const m = `${Math.floor(sec / 60)}`.padStart(2, '0')
+    const s = `${Math.floor(sec % 60)}`.padStart(2, '0')
+    return `${m}:${s}`
   },
 
   onUnload() {
