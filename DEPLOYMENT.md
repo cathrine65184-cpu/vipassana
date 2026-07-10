@@ -33,9 +33,12 @@
 
 ## 四、音频资源
 
-1. 冥想音频上传到云存储（或自有 CDN，需在「开发设置 → 服务器域名」配置 downloadFile 合法域名）
-2. 将 fileID / URL 填入 `meditations` 集合（本地开发填 `data/meditations.ts` 的 `audio` 字段）
-3. 播放器检测到 `audio` 非空时自动切换为真实播放（`InnerAudioContext`）
+`audio` 字段支持三种来源，播放器自动识别（`InnerAudioContext`，失败降级计时模式）：
+1. **包内路径**（如 `/assets/audio/m1-breath.m4a`）——开发/演示期用，压缩至 32kbps HE-AAC；⚠️ 会占主包体积（正式发布主包限 2MB），仅适合临时验证，开发预览需开启 `bigPackageSizeSupport`
+2. **云存储 fileID**（`cloud://...`）——推荐的正式方案：云开发控制台 → 存储 → 上传高清母带（`media-master/` 目录）→ 复制 fileID 填入
+3. **https 直链**——自有 CDN，需在「开发设置 → 服务器域名」配置 downloadFile 合法域名
+
+上线前请把包内音频迁移到云存储并删除 `miniprogram/assets/audio/` 下的大文件。
 
 ## 五、微信支付
 

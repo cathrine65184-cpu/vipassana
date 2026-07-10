@@ -21,7 +21,8 @@ export interface Meditation {
 export const categories = ['呼吸', '身体扫描', '睡眠', '疗愈', '晨间', '减压', '专注', '行走', '饮食']
 
 export const meditations: Meditation[] = [
-  { id: 'm1', title: '呼吸觉知练习', category: '呼吸', minutes: 10, desc: '回到一呼一吸，看念头来了又走。', cover: 'g-forest', img: img.meditation },
+  // m1 已挂真实音频（包内 32kbps HE-AAC，10 分钟；高清母带在 /media-master，上线时传云存储后改成 cloud:// fileID）
+  { id: 'm1', title: '呼吸觉知练习', category: '呼吸', minutes: 10, desc: '回到一呼一吸，看念头来了又走。', cover: 'g-forest', img: img.meditation, audio: '/assets/audio/m1-breath.m4a' },
   { id: 'm2', title: '观息法 · 安那般那', category: '呼吸', minutes: 20, desc: '内观入门的根基：只是观察鼻端的呼吸。', cover: 'g-moss', img: img.sunLeaves },
   { id: 'm3', title: '全身扫描 · 由头至足', category: '身体扫描', minutes: 25, desc: '带着平等心，逐寸感受身体的感受。', cover: 'g-dew', img: img.foggyHills },
   { id: 'm4', title: '睡前放松 · 入眠扫描', category: '睡眠', minutes: 18, desc: '把一天放下，让身体先睡着。', cover: 'g-night', img: img.lake },

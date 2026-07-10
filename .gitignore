@@ -5,6 +5,9 @@ miniprogram/node_modules/
 # NOTE: project.private.config.json is intentionally committed so the project
 # opens and runs on a fresh download without DevTools mis-resolving the root.
 
+# 高清音频母带（仅本地保存，上线时上传云存储；不进 git 也不进小程序包）
+media-master/
+
 # system
 .DS_Store
 

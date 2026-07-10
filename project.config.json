@@ -33,7 +33,8 @@
     "disableUseStrict": false,
     "condition": false,
     "swc": false,
-    "disableSWC": true
+    "disableSWC": true,
+    "bigPackageSizeSupport": true
   },
   "libVersion": "3.4.0",
   "packOptions": {
