@@ -42,6 +42,26 @@ Page({
   onLoad(query: any) {
     const med = getMeditation(query.id) || meditations[0]
     const s = getState()
+
+    // VIP 专享拦截：非会员引导开通后再收听
+    if (med.vip && !s.vip) {
+      wx.showModal({
+        title: '会员专属冥想',
+        content: `「${med.title}」为 VIP 会员专属内容。\n开通会员即可无限畅听全部冥想。`,
+        confirmText: '开通会员',
+        cancelText: '返回',
+        confirmColor: '#A68F55',
+        success(res: any) {
+          if (res.confirm) {
+            wx.redirectTo({ url: '/pages/vip/index' })
+          } else {
+            wx.navigateBack()
+          }
+        }
+      })
+      return
+    }
+
     wx.setNavigationBarTitle({ title: med.title })
     const total = med.minutes * 60
     const start = s.lastPlayed === med.id ? Math.min(s.lastPlayedAt, total - 1) : 0
@@ -108,7 +128,8 @@ Page({
     this.stopTicker()
     if (this.audio) this.audio.destroy()
     wx.setKeepScreenOn({ keepScreenOn: false })
-    setState({ lastPlayedAt: this.data.current })
+    // 被 VIP 拦截时 med 未初始化，不覆盖上一条的播放进度
+    if (this.data.med) setState({ lastPlayedAt: this.data.current })
   },
 
   /* ---------- 播放控制 ---------- */

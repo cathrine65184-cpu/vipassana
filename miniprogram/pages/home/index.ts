@@ -25,18 +25,8 @@ const pillars = [
     items: [
       { label: '日常觉察', url: '/pages/coach/index' },
       { label: '觉知练习', url: '/pages/player/index?id=m2' },
-      { label: '身体扫描', url: '/pages/player/index?id=m3' },
-      { label: '情绪观察', url: '/pages/player/index?id=m11' }
-    ]
-  },
-  {
-    id: 'zheng', title: '正念', en: 'Mindfulness', icon: 'smile-o', cover: 'g-dew',
-    desc: '把心带回此时此地',
-    items: [
       { label: '正念练习', url: '/pages/player/index?id=m1' },
-      { label: '呼吸冥想', url: '/pages/player/index?id=m12' },
-      { label: '行走冥想', url: '/pages/player/index?id=m10' },
-      { label: '饮食冥想', url: '/pages/player/index?id=m13' }
+      { label: '情绪观察', url: '/pages/player/index?id=m11' }
     ]
   },
   {
