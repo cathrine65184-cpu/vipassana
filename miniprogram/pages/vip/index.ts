@@ -12,9 +12,7 @@ const plans = [
 
 const benefits = [
   { icon: 'volume-o', title: '无限冥想', desc: '全部冥想音频不限次聆听' },
-  { icon: 'bookmark-o', title: '全部高阶课程', desc: '四条学习路径随心学' },
-  { icon: 'friends-o', title: '专属社区', desc: '会员圈子，深度交流' },
-  { icon: 'discount', title: '禅修营折扣', desc: '线下禅修营专属优惠' }
+  { icon: 'friends-o', title: '专属社区', desc: '会员圈子，深度交流' }
 ]
 
 Page({

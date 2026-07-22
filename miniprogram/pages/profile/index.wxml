@@ -24,7 +24,7 @@
   <view class="card vip {{vip ? 'is-vip' : ''}}" bindtap="goVip">
     <view>
       <view class="vip-title display">{{vip ? 'VIP 会员 · ' + vipPlan : '成为 VIP 会员'}}</view>
-      <view class="vip-sub">{{vip ? '感谢同行，愿你安住' : '解锁全部课程与冥想 · 专属社区 · 禅修营折扣'}}</view>
+      <view class="vip-sub">{{vip ? '感谢同行，愿你安住' : '解锁全部冥想体验 · 专属社区'}}</view>
     </view>
     <van-icon name="{{vip ? 'diamond' : 'diamond-o'}}" size="52rpx" color="#B99A5B" />
   </view>
