@@ -77,8 +77,8 @@
         </view>
       </view>
 
-      <!-- 四大支柱详情卡 -->
-      <section-title title="四大支柱" sub="The Four Pillars" />
+      <!-- 三大支柱详情卡 -->
+      <section-title title="三大支柱" sub="The Three Pillars" />
       <view class="pillars">
         <view
           wx:for="{{pillars}}"

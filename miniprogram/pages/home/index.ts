@@ -7,7 +7,7 @@ import { quotes } from '../../data/quotes'
 import { img } from '../../data/images'
 import { getState, currentStreak, weekProgress, checkedToday, checkinToday } from '../../utils/store'
 
-// 四大支柱：Hero 中的圆形速览按钮 + 下方详情卡共用
+// 三大支柱：Hero 中的圆形速览按钮 + 下方详情卡共用
 const pillars = [
   {
     id: 'guan', title: '内观', en: 'Vipassana', icon: 'aim', cover: 'g-forest',
