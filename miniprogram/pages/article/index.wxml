@@ -5,6 +5,10 @@
   </view>
 
   <view class="card a-body">
+    <view wx:if="{{article.notice}}" class="medical-notice">
+      <van-icon name="info-o" size="30rpx" color="#A68F55" />
+      <text>{{article.notice}}</text>
+    </view>
     <block wx:for="{{article.blocks}}" wx:key="index">
       <!-- 小节标题 -->
       <view wx:if="{{item.type === 'h'}}" class="b-h">
@@ -12,13 +16,15 @@
         <text>{{item.text}}</text>
       </view>
 
+      <view wx:elif="{{item.type === 'h2'}}" class="b-h2">{{item.text}}</view>
+
       <!-- 段落 -->
       <view wx:elif="{{item.type === 'p'}}" class="b-p">{{item.text}}</view>
 
       <!-- 要点 -->
       <view wx:elif="{{item.type === 'li'}}" class="b-li">
         <view class="b-li-dot"></view>
-        <view class="b-li-text"><text class="b-li-term">{{item.term}}：</text>{{item.text}}</view>
+        <view class="b-li-text"><text wx:if="{{item.term}}" class="b-li-term">{{item.term}}：</text>{{item.text}}</view>
       </view>
 
       <!-- 提示卡 -->

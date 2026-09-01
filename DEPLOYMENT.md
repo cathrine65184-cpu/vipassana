@@ -40,6 +40,17 @@
 
 上线前请把包内音频迁移到云存储并删除 `miniprogram/assets/audio/` 下的大文件。
 
+### 付费课程视频
+
+课程母版约 638MB，不能放进小程序代码包或 GitHub：
+
+1. 云开发 -> 存储，新建 `course-videos/` 目录。
+2. 上传本地 `【禅师】强迫症的内观接纳之旅(含内观康复指导音频课程）/` 中的 14 个文件。
+3. 把控制台返回的 `cloud://` fileID 填入 `miniprogram/data/course-media.ts` 对应的 `cloudFileId`。
+4. 重新编译；购买后课程播放器会换取临时 URL 播放。
+
+正式上线还必须把购买状态移到云数据库，并由支付回调写入已支付订单。当前演示支付不能作为生产授权依据。
+
 ## 五、微信支付
 
 1. 开通微信支付商户号，与小程序关联，云开发控制台绑定
@@ -52,16 +63,19 @@
 
 ## 六、接入大模型（AI 功能）
 
-`cloudfunctions/ai/index.js` 按 action 路由：
+`cloudfunctions/ai/index.js` 已接入 OpenAI-compatible Chat Completions API。目前“今日反思”会真实调用云函数，不再用本地关键词规则冒充 AI。
 
-| action | 功能 | 提示词要点 |
-|---|---|---|
-| `coach` | 正念教练 | 永不给建议，只用开放式提问引导觉察 |
-| `reflect` | 日记小结 | 输出 `{ emotions: string[], summary: string }` |
-| `dailySentence` | 每日一句 | 配合云开发「定时触发器」每天清晨生成 |
+在云函数环境变量中配置：
 
-前端只需把 `utils/ai.ts` 各函数替换为对应云函数调用，页面零改动。
-> 注意：大模型 API 地址需加入云函数出网白名单；内容需符合平台审核规范。
+- `AI_API_KEY`：必填，服务端 API Key
+- `AI_BASE_URL`：可选，默认 `https://api.deepseek.com/chat/completions`
+- `AI_MODEL`：可选，默认 `deepseek-chat`
+
+然后右键 `cloudfunctions/ai` -> “上传并部署：云端安装依赖”。未配置密钥时，前端会明确提示服务未配置，并保留用户输入供重试。
+
+在云函数配置中把执行超时从默认 3 秒调整为 **30 秒**，否则大模型尚未返回时函数可能已超时。
+
+> API Key 绝不能放在 `miniprogram/` 前端目录。日记属于敏感内容，上线前还需补充隐私政策、数据留存/删除机制和危机提示。
 
 ## 七、订阅消息（每日提醒 / 禁语提醒）
 

@@ -8,6 +8,9 @@ miniprogram/node_modules/
 # 高清音频母带（仅本地保存，上线时上传云存储；不进 git 也不进小程序包）
 media-master/
 
+# 课程视频母版约 638MB，仅用于上传微信云存储，不进入 Git/GitHub
+【禅师】强迫症的内观接纳之旅(含内观康复指导音频课程）/
+
 # system
 .DS_Store
 

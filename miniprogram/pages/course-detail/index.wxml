@@ -53,6 +53,9 @@
       data-id="{{item.id}}"
       data-locked="{{item.locked}}"
       data-done="{{item.done}}"
+      data-type="{{item.type}}"
+      data-resource-key="{{item.resourceKey}}"
+      data-article-id="{{item.articleId}}"
       bindtap="tapChapter"
     >
       <view class="chapter-icon {{item.done ? 'done' : ''}}">
@@ -65,6 +68,22 @@
       <van-icon wx:if="{{item.locked}}" name="lock" size="30rpx" color="#B99A5B" />
       <van-icon wx:else name="arrow" size="26rpx" color="rgba(32,50,40,0.3)" />
     </view>
+  </view>
+
+  <!-- 咨询产品购买后显示本人微信二维码；原图可长按保存或点击查看 -->
+  <view class="card contact-card" wx:if="{{unlocked && (course.id === 'one2one' || course.id === 'group')}}">
+    <view class="contact-head">
+      <view>
+        <view class="t-title">添加导师微信</view>
+        <view class="t-hint">购买成功后，请扫码添加 Drake 导师预约咨询</view>
+      </view>
+      <van-icon name="qr" size="44rpx" color="#A68F55" />
+    </view>
+    <view class="qr-window" bindtap="previewWechat">
+      <image class="qr-source" src="/assets/wechat-contact.jpg" mode="widthFix" show-menu-by-longpress />
+    </view>
+    <view class="btn btn-secondary contact-btn" bindtap="previewWechat">查看完整二维码</view>
+    <view class="privacy-note">二维码仅对已购用户显示，请勿公开转发。</view>
   </view>
 
   <!-- 完课徽章 -->

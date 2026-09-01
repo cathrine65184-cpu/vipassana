@@ -13,6 +13,7 @@
     <view class="btn btn-primary" bindtap="analyze">
       {{analyzing ? '正在轻轻阅读…' : '保存并生成 AI 觉察小结'}}
     </view>
+    <view class="ai-note">由云端大模型总结 · 内容仅用于个人觉察，不替代专业诊疗</view>
   </view>
 
   <!-- 最新小结 -->
@@ -25,6 +26,7 @@
       <text wx:for="{{result.emotions}}" wx:key="*this" class="emo-tag">{{item}}</text>
     </view>
     <view class="summary">{{result.summary}}</view>
+    <view wx:if="{{result.question}}" class="reflection-question">{{result.question}}</view>
   </view>
 
   <!-- 历史 -->

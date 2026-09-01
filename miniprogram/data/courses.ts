@@ -13,6 +13,10 @@ export interface Chapter {
   type: 'video' | 'audio' | 'article' | 'quiz' | 'practice'
   duration: string
   free?: boolean
+  /** 对应 data/course-media.ts 中的付费媒体资源键 */
+  resourceKey?: string
+  /** 图文章节对应 data/articles.ts 的文章 id */
+  articleId?: string
 }
 
 export interface Course {
@@ -55,18 +59,20 @@ export const courses: Course[] = [
     badge: '内观初心',
     // 真实章节目录（2026-07 内容稿）：约 3 小时高清录播，共 12 讲
     chapters: [
-      { id: 'f1', title: '你一定可以走出来', type: 'video', duration: '约 6 分钟', free: true },
-      { id: 'f2', title: '强迫症的本质是什么', type: 'video', duration: '约 7 分钟' },
-      { id: 'f3', title: '强迫症的根源疗愈之道', type: 'video', duration: '约 8 分钟' },
-      { id: 'f4', title: '何为安那般那念', type: 'video', duration: '约 5 分钟' },
-      { id: 'f5', title: '平等心的重要性', type: 'video', duration: '约 3 分钟' },
-      { id: 'f6', title: '带你做内观', type: 'video', duration: '约 20 分钟' },
-      { id: 'f7', title: '就是如此', type: 'video', duration: '约 9 分钟' },
-      { id: 'f8', title: '就是如此融入生活深化练习', type: 'video', duration: '约 10 分钟' },
-      { id: 'f9', title: '什么才是好的状态', type: 'video', duration: '约 6 分钟' },
-      { id: 'f10', title: '陈老师实战康复经验分享（上）', type: 'video', duration: '约 20 分钟' },
-      { id: 'f11', title: '陈老师实战康复经验分享（中）', type: 'video', duration: '约 30 分钟' },
-      { id: 'f12', title: '陈老师实战康复经验分享（下）', type: 'video', duration: '约 30 分钟' }
+      { id: 'f1', title: '你一定可以走出来', type: 'video', duration: '6:07', resourceKey: 'f1' },
+      { id: 'f2', title: '强迫症的本质是什么', type: 'video', duration: '7:18', resourceKey: 'f2' },
+      { id: 'f3', title: '强迫症的根源疗愈之道', type: 'video', duration: '8:03', resourceKey: 'f3' },
+      { id: 'f4', title: '何为安那般那念', type: 'video', duration: '5:54', resourceKey: 'f4' },
+      { id: 'f5', title: '平等心的重要性', type: 'video', duration: '3:00', resourceKey: 'f5' },
+      { id: 'f6', title: '带你做内观（第一周）', type: 'video', duration: '23:50', resourceKey: 'f6' },
+      { id: 'f7', title: '就是如此', type: 'video', duration: '9:49', resourceKey: 'f7' },
+      { id: 'f8', title: '就是如此生活深化练习', type: 'video', duration: '10:15', resourceKey: 'f8' },
+      { id: 'f9', title: '真正好的状态是什么样子的', type: 'video', duration: '6:17', resourceKey: 'f9' },
+      { id: 'f10', title: '自然法则（随时听）', type: 'video', duration: '3:35', resourceKey: 'f10' },
+      { id: 'f11', title: '30 分钟内观音频（第二周）', type: 'video', duration: '30:01', resourceKey: 'f11' },
+      { id: 'f12', title: '陈川导师实战技巧指导（上）', type: 'video', duration: '20:15', resourceKey: 'f12' },
+      { id: 'f13', title: '陈川导师实战技巧指导（中）', type: 'video', duration: '30:11', resourceKey: 'f13' },
+      { id: 'f14', title: '陈川导师实战技巧指导（下）', type: 'video', duration: '29:48', resourceKey: 'f14' }
     ]
   },
   {
@@ -110,11 +116,11 @@ export const courses: Course[] = [
     badge: '自由之道',
     chapters: [
       { id: 'g1', title: '入组评估：三位导师共同了解你', type: 'audio', duration: '90 分钟', free: true },
-      { id: 'g2', title: '概念课：接纳、执着与恐惧的运作', type: 'video', duration: '60 分钟' },
+      { id: 'g2', title: '概念课：接纳、执着与恐惧的运作', type: 'video', duration: '90 分钟' },
       { id: 'g3', title: '实战训练：日常场景中的觉察落地', type: 'practice', duration: '每日' },
-      { id: 'g4', title: '信念感：康复故事与自我慈悲', type: 'audio', duration: '45 分钟' },
+      { id: 'g4', title: '信念感：康复故事与自我慈悲', type: 'audio', duration: '90 分钟' },
       { id: 'g5', title: '康复手册：15000 字系统阅读', type: 'article', duration: '90 分钟' },
-      { id: 'g6', title: '阶段测验：洞见与整合', type: 'quiz', duration: '20 分钟' },
+      { id: 'g6', title: '阶段测验：洞见与整合', type: 'quiz', duration: '90 分钟' },
       { id: 'g7', title: '防复发：720 小时保护期实修', type: 'practice', duration: '30 天' }
     ]
   },
@@ -136,8 +142,7 @@ export const courses: Course[] = [
     highlights: ['新手入门', '康复地图', '社群陪伴', '深度阅读'],
     badge: '初心手册',
     chapters: [
-      { id: 'gd1', title: '手册导读：如何使用这份指南', type: 'article', duration: '10 分钟', free: true },
-      { id: 'gd2', title: '康复手册 · 全文阅读（约 15000 字）', type: 'article', duration: '约 90 分钟' },
+      { id: 'gd2', title: '康复手册 · 全文文章（约 15000 字）', type: 'article', duration: '约 90 分钟', articleId: 'recovery-manual' },
       { id: 'gd3', title: '加入内部讨论群，跟随老师实践', type: 'practice', duration: '长期' }
     ]
   }

@@ -17,6 +17,8 @@
   border-radius: 999rpx;
 }
 .summary { margin-top: 24rpx; font-size: 27rpx; line-height: 2; color: var(--ink-2); }
+.ai-note { margin-top: 18rpx; text-align: center; color: var(--ink-3); font-size: 21rpx; }
+.reflection-question { margin-top: 24rpx; padding: 22rpx 24rpx; border-radius: 20rpx; background: var(--card-soft); color: var(--ink); font-size: 26rpx; line-height: 1.8; }
 
 .entry-head { display: flex; align-items: center; justify-content: space-between; }
 .entry-date { font-size: 24rpx; color: var(--gold); }

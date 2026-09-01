@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "课程播放",
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

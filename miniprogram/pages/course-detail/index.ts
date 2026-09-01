@@ -57,11 +57,24 @@ Page({
 
   /** 点击章节：免费或已购可学习并标记完成 */
   tapChapter(e: any) {
-    const { id, locked, done } = e.currentTarget.dataset
+    const { id, locked, done, type, resourceKey, articleId } = e.currentTarget.dataset
     if (locked) {
       wx.showToast({ title: '购买后解锁本章节', icon: 'none' })
       return
     }
+
+    if (type === 'video' && resourceKey) {
+      wx.navigateTo({
+        url: `/pages/course-player/index?courseId=${this.courseId}&chapterId=${id}&resourceKey=${resourceKey}`
+      })
+      return
+    }
+
+    if (type === 'article' && articleId) {
+      wx.navigateTo({ url: `/pages/article/index?id=${articleId}` })
+      return
+    }
+
     const s = getState()
     const progress = Object.assign({}, s.courseProgress)
     const list = progress[this.courseId] || []
@@ -90,6 +103,13 @@ Page({
         wx.showToast({ title: '已解锁，开始学习吧', icon: 'success' })
       })
       .catch(() => { /* 用户取消 */ })
+  },
+
+  previewWechat() {
+    wx.previewImage({
+      current: '/assets/wechat-contact.jpg',
+      urls: ['/assets/wechat-contact.jpg']
+    })
   },
 
   onShareAppMessage() {

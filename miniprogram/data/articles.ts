@@ -5,7 +5,7 @@
  */
 
 export interface ArticleBlock {
-  type: 'h' | 'p' | 'li' | 'tip'
+  type: 'h' | 'h2' | 'p' | 'li' | 'tip'
   term?: string
   text: string
 }
@@ -16,6 +16,9 @@ export interface Article {
   subtitle: string
   cover: string
   blocks: ArticleBlock[]
+  /** 需要购买指定课程后阅读 */
+  premiumCourseId?: string
+  notice?: string
 }
 
 export const articles: Article[] = [
@@ -66,6 +69,16 @@ export const articles: Article[] = [
       { type: 'li', term: '支持免疫系统', text: '减轻长期慢性压力对免疫功能的抑制，有助于维持身体的整体健康平衡。' },
       { type: 'tip', text: '正念并非消除压力或痛苦的万灵药，而是一种改变我们与它们相处方式的内在工具。它的益处往往来自于日复一日、温和而坚定的点滴积累。' }
     ]
+  },
+  {
+    id: 'recovery-manual',
+    title: '内观终极实修手册',
+    subtitle: '完整版 · 约 15000 字 · 购买后阅读全文',
+    cover: 'g-forest',
+    premiumCourseId: 'guide',
+    notice: '本文为作者个人实修经验与教育性内容，不构成医疗诊断、治疗建议或疗效保证。正在接受专业治疗的读者，请勿自行停药或中断治疗；如有危机风险，请及时联系当地急救或专业机构。',
+    // 付费正文在 article 页面完成购买校验后注入，避免普通文章列表直接加载。
+    blocks: []
   }
 ]
 

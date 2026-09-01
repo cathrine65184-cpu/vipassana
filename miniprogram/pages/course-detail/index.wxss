@@ -95,6 +95,26 @@
 
 .badge-card { display: flex; align-items: center; gap: 24rpx; background: linear-gradient(120deg, var(--card), var(--gold-soft)); }
 
+.contact-card { overflow: hidden; }
+.contact-head { display: flex; align-items: center; justify-content: space-between; gap: 20rpx; }
+.contact-head .t-hint { margin-top: 8rpx; line-height: 1.6; }
+.qr-window {
+  position: relative;
+  height: 690rpx;
+  margin-top: 28rpx;
+  overflow: hidden;
+  border-radius: 28rpx;
+  background: #111;
+}
+.qr-source {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: -72rpx;
+}
+.contact-btn { margin-top: 24rpx; }
+.privacy-note { margin-top: 16rpx; text-align: center; font-size: 22rpx; color: var(--ink-3); }
+
 .buybar {
   position: fixed;
   left: 0;

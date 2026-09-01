@@ -8,6 +8,11 @@
 .a-sub { margin-top: 14rpx; font-size: 25rpx; opacity: 0.78; line-height: 1.7; }
 
 .a-body { padding: 40rpx 36rpx; }
+.medical-notice {
+  display: flex; gap: 14rpx; align-items: flex-start; margin-bottom: 36rpx;
+  padding: 24rpx; border-radius: 20rpx; background: var(--gold-soft);
+  color: var(--ink-2); font-size: 23rpx; line-height: 1.8;
+}
 
 .b-h {
   display: flex;
@@ -18,6 +23,7 @@
   margin: 44rpx 0 8rpx;
 }
 .b-h:first-child { margin-top: 0; }
+.b-h2 { margin: 34rpx 0 4rpx; font-size: 29rpx; font-weight: 700; line-height: 1.7; color: var(--ink); }
 .b-h-bar {
   width: 8rpx;
   height: 32rpx;

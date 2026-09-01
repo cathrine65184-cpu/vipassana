@@ -1,0 +1,30 @@
+<view class="player-page">
+  <view class="video-shell">
+    <video
+      wx:if="{{src}}"
+      class="course-video"
+      src="{{src}}"
+      title="{{title}}"
+      controls
+      autoplay
+      enable-progress-gesture
+      play-btn-position="center"
+      bindended="onEnded"
+      binderror="onVideoError"
+    />
+    <view wx:elif="{{loading}}" class="state-panel">
+      <van-icon name="replay" class="spin" size="52rpx" color="#A68F55" />
+      <text>正在准备课程…</text>
+    </view>
+    <view wx:else class="state-panel">
+      <van-icon name="video-o" size="68rpx" color="#A68F55" />
+      <view class="state-title">视频正在准备中</view>
+      <view class="state-desc">{{errorText}}</view>
+    </view>
+  </view>
+  <view class="course-meta">
+    <view class="course-title">{{title}}</view>
+    <view class="course-duration">视频 · {{duration}}</view>
+    <view class="notice">课程仅供已购用户本人学习，请勿录屏、下载或传播。</view>
+  </view>
+</view>

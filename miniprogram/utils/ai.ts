@@ -60,6 +60,38 @@ const emotionLexicon: { key: string, words: string[] }[] = [
 export interface ReflectionResult {
   emotions: string[]
   summary: string
+  question?: string
+  crisis?: boolean
+}
+
+/**
+ * 真实云端 AI 反思。API Key 只存在云函数环境变量中，不进入小程序代码包。
+ * 服务未配置时主动失败，避免把本地关键词规则冒充成 AI。
+ */
+export function reflectWithAI(text: string): Promise<ReflectionResult> {
+  return new Promise((resolve, reject) => {
+    if (!wx.cloud || !wx.cloud.callFunction) {
+      reject(new Error('AI 云服务尚未启用'))
+      return
+    }
+    wx.cloud.callFunction({
+      name: 'ai',
+      data: { action: 'reflect', payload: { text } },
+      success: (res: any) => {
+        const result = res && res.result
+        if (!result || result.error || result.configured === false) {
+          reject(new Error((result && result.message) || 'AI 服务尚未配置'))
+          return
+        }
+        if (!Array.isArray(result.emotions) || typeof result.summary !== 'string') {
+          reject(new Error('AI 返回格式异常，请稍后重试'))
+          return
+        }
+        resolve(result as ReflectionResult)
+      },
+      fail: (err: any) => reject(new Error(err.errMsg || 'AI 服务连接失败'))
+    })
+  })
 }
 
 export function reflect(text: string): ReflectionResult {

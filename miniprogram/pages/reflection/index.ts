@@ -1,7 +1,7 @@
 /**
  * AI 觉察日记（功能 1）：写日记 → AI 总结情绪模式
  */
-import { reflect } from '../../utils/ai'
+import { reflectWithAI } from '../../utils/ai'
 import { getState, setState, dateKey } from '../../utils/store'
 
 Page({
@@ -20,16 +20,15 @@ Page({
     this.setData({ text: e.detail.value })
   },
 
-  analyze() {
+  async analyze() {
     const text = this.data.text.trim()
     if (text.length < 5) {
       wx.showToast({ title: '再多写两句吧', icon: 'none' })
       return
     }
     this.setData({ analyzing: true })
-    // 本地情绪分析；接大模型后调云函数 ai（action: 'reflect'）
-    setTimeout(() => {
-      const result = reflect(text)
+    try {
+      const result = await reflectWithAI(text)
       const s = getState()
       const entry = {
         id: `j-${Date.now()}`,
@@ -40,7 +39,24 @@ Page({
       }
       setState({ journal: [entry].concat(s.journal), treePoints: s.treePoints + 2 })
       this.setData({ analyzing: false, result, text: '', history: getState().journal })
-    }, 1200)
+      if (result.crisis) {
+        wx.showModal({
+          title: '请优先照顾安全',
+          content: '如果你正处于伤害自己或他人的危险中，请立即联系当地急救、可信任的人或专业心理援助。AI 不能处理紧急情况。',
+          showCancel: false,
+          confirmColor: '#57663F'
+        })
+      }
+    } catch (e) {
+      const message = e instanceof Error ? e.message : 'AI 小结生成失败'
+      this.setData({ analyzing: false })
+      wx.showModal({
+        title: '暂时无法生成 AI 小结',
+        content: `${message}\n\n你的文字仍保留在输入框中，请稍后重试。`,
+        showCancel: false,
+        confirmColor: '#57663F'
+      })
+    }
   },
 
   removeEntry(e: any) {
